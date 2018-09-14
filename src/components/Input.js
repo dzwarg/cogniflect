@@ -1,13 +1,19 @@
 import React from 'react'
+import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
 import { connect } from 'react-redux'
 import actions from '../actions'
 
 const Input = ({appState, handleChange, handleClick}) => {
   return (
-    <form>
-      <input type="text" value={appState.get('userLabel')} onChange={handleChange} />
-      <button onClick={handleClick}>Save</button>
-    </form>
+    <Form inline>
+      <FormGroup>
+        <ControlLabel>Type in the label:</ControlLabel>
+        {' '}
+        <FormControl type="text" value={appState.get('userLabel')} onChange={handleChange} placeholder="My Label" />
+        {' '}
+        <Button onClick={handleClick}>Save</Button>
+      </FormGroup>
+    </Form>
   );
 };
 
