@@ -4,14 +4,15 @@ import { connect } from 'react-redux'
 import actions from '../actions'
 
 const Input = ({appState, handleChange, handleClick}) => {
+  const userLabel = appState.get('userLabel')
   return (
     <Form inline>
       <FormGroup>
         <ControlLabel>Type in the label:</ControlLabel>
         {' '}
-        <FormControl type="text" value={appState.get('userLabel')} onChange={handleChange} placeholder="My Label" />
+        <FormControl type="text" value={userLabel} onChange={handleChange} placeholder="My Label" />
         {' '}
-        <Button onClick={handleClick}>Save</Button>
+        <Button onClick={handleClick(userLabel)}>Save</Button>
       </FormGroup>
     </Form>
   );
@@ -28,13 +29,9 @@ const mapDispatchToProps = (dispatch) => {
     handleChange: (evt) => {
       dispatch(actions.set(['userLabel'], evt.target.value));
     },
-    handleClick: (evt) => {
+    handleClick: (userLabel) => (evt) => {
       evt.preventDefault();
-      
-      dispatch((dispatch, getState) => {
-        const label = getState().appState.get('userLabel');
-        dispatch(actions.set(['label'], label));
-      });
+      dispatch(actions.set(['label'], userLabel));
     }
   };
 };

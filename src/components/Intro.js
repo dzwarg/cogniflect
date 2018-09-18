@@ -5,8 +5,8 @@ import '../styles/Intro.css';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-const Intro = ({appState, handleChange}) => {
-  const teamCode = appState.get('teamCode');
+const Intro = ({appState, handleChange, handleClick}) => {
+  const userTeamCode = appState.get('userTeamCode');
   
   return (
     <Grid>
@@ -38,7 +38,7 @@ const Intro = ({appState, handleChange}) => {
             <FormGroup>
               <InputGroup>
                 <InputGroup.Addon>#</InputGroup.Addon>
-                <FormControl type="text" placeholder="team code" onChange={handleChange} value={teamCode} />
+                <FormControl type="text" placeholder="team code" onChange={handleChange} value={userTeamCode} />
               </InputGroup>
             </FormGroup>
           </div>
@@ -48,7 +48,7 @@ const Intro = ({appState, handleChange}) => {
         <Col xs={2} xsOffset={5}>
           <p className="centered">
             <LinkContainer to="/question/1">
-              <Button bsStyle="success">Let&apos;s get started!</Button>
+              <Button onClick={handleClick(userTeamCode)} bsStyle="success">Let&apos;s get started!</Button>
             </LinkContainer>
           </p>
         </Col>
@@ -64,9 +64,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    handleChange: (evt) => {
-      dispatch(actions.set(['teamCode'], evt.target.value));
-    }
+  handleChange: (evt) => {
+    dispatch(actions.set(['userTeamCode'], evt.target.value));
+  },
+  handleClick: (teamCode) => (evt) => {
+    dispatch(actions.set(['teamCode'], teamCode));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Intro);
