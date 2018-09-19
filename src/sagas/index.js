@@ -20,6 +20,9 @@ const subscribe = (socket) => {
     socket.on('members_synced', (num) => {
       emit(actions.set(['team', 'synced'], num));
     });
+    socket.on('answer_count', ({questionId, answerCount}) => {
+      emit(actions.set(['questions', questionId, 'teamAnswerCount'], answerCount));
+    });
     socket.on('disconnect', e => {
       console.log('disconnected');
     });
@@ -39,7 +42,7 @@ const scorePattern = (action) => {
   // what is the data in an action that indicates that a score has been made?
   return (action.payload.path.length === 2) &&
     (action.payload.path[0] === 'questions') &&
-    (action.payload.value.get('answer') !== null);
+    (action.payload.value.get('myAnswer') !== null);
 };
 
 const synchronizePattern = (action) => {

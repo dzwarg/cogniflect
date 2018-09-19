@@ -4,32 +4,29 @@ import {LinkContainer} from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-const StartOver = ({proceed, questions, clickHandler}) => (
+const StartOver = ({children, continueHandler, proceed, questions, startOverHandler}) => (
   <Row>
     <Col>
         <p>
           <LinkContainer to="/">
-            <Button onClick={clickHandler(questions)} bsStyle="warning">Start Over</Button>
+            <Button onClick={startOverHandler(questions)} bsStyle="warning">Start Over</Button>
           </LinkContainer>
-          {proceed && <LinkContainer to="/bananas">
-            <Button bsStyle="success">Continue</Button>
-          </LinkContainer>}
+          {children}
         </p>
     </Col>
   </Row>
 );
 
 const mapStateToProps = (state) => ({
-  questions: state.appState.get('questions'),
-  proceed: state.appState.getIn(['team', 'members']) > 0 &&
-    state.appState.getIn(['team', 'members']) === state.appState.getIn(['team', 'synced'])
+  questions: state.appState.get('questions')
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  clickHandler: (questions) => (e) => {
+  startOverHandler: (questions) => (e) => {
+    dispatch(actions.set(['teamCode'], ''));
     dispatch(actions.set(['questionCursor'], 0));
     dispatch(actions.set(['questions'], questions.map((question) => {
-      return question.set('answer', null);
+      return question.set('myAnswer', null).set('ourAnswer', null);
     })));
   }
 });

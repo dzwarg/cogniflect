@@ -10,7 +10,9 @@ const initialState = fromJS({
       id: 0,
       text: "What is the air speed of an unlaiden swallow?",
       truth: 0,
-      answer: null,
+      myAnswer: null,
+      ourAnswer: null,
+      teamAnswerCount: 0,
       guesses: [
         { id: 0, text: 'African or European?' },
         { id: 1, text: '42' },
@@ -23,7 +25,9 @@ const initialState = fromJS({
       id: 1,
       text: "Who is the 55th President of the United States?",
       truth: 1,
-      answer: null,
+      myAnswer: null,
+      ourAnswer: null,
+      teamAnswerCount: 0,
       guesses: [
         { id: 0, text: 'McCauley Caulkin' },
         { id: 1, text: 'Bugs Bunny' },

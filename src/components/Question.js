@@ -1,9 +1,10 @@
 import React from 'react';
 import StartOver from './StartOver';
-import {Checkbox, Col, Form, Grid, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
+import {Button, Checkbox, Col, Form, Grid, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import actions from '../actions';
 import {withRouter} from "react-router-dom";
+import {LinkContainer} from 'react-router-bootstrap';
 
 const Question = withRouter(({appState, changeHandler, history, match}) => {
   const questionId = parseInt(match.params.questionId, 10) - 1;
@@ -11,13 +12,21 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
   const questionDataJS = questionData.toJS();
   const questionSize = appState.get('questions').size;
   const cursor = 100 * (questionId / questionSize);
+  const memberAnswers = appState.getIn(['questions', questionId, 'teamAnswerCount']);
+  const totalMembers = appState.getIn(['team', 'members']);
+  const assessmentType = appState.get('assessmentType');
+  const answerKey = (assessmentType === 'individual') ? 'myAnswer' : 'ourAnswer';
+  
+  const nextLocation = (questionId + 1) === questionSize ? '/summary' : `/question/${questionDataJS.next + 1}`;
   
   return (
     <Grid>
       <Row>
         <Col>
           <Jumbotron>
-            <h1>Individual Assessment</h1>
+            <h1 className="capitalized">{assessmentType} assessment</h1>
+            {(assessmentType === 'team') &&
+              <p>{memberAnswers} of {totalMembers} team members have answered this question.</p>}
           </Jumbotron>
         </Col>
       </Row>
@@ -35,8 +44,8 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
             <ul>
               {questionDataJS.guesses.map((guess) => {
                 const checkProps = {
-                  onChange: changeHandler(questionData, questionId, guess.id, history),
-                  checked: (guess.id === questionDataJS.answer)
+                  onChange: changeHandler(questionData, questionId, assessmentType, answerKey, guess.id, history),
+                  checked: (guess.id === questionDataJS[answerKey])
                 }
     
                 return (
@@ -52,7 +61,17 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
           <ProgressBar now={cursor} label={`${cursor}%`} srOnly active/>
         </Col>
       </Row>
-      <StartOver />
+      <StartOver>
+        {assessmentType === 'team' &&
+          <LinkContainer to={nextLocation}>
+            {
+              memberAnswers === totalMembers ?
+              <Button bsStyle="success">Next</Button> :
+              <Button bsStyle="success" disabled>Next</Button>
+            }
+          </LinkContainer>
+        }
+      </StartOver>
     </Grid>
   );
 });
@@ -62,17 +81,19 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeHandler: (questionData, questionId, guessId, history) => (evt) => {
+  changeHandler: (questionData, questionId, assessmentType, answerKey, guessId, history) => (evt) => {
     evt.preventDefault();
     
-    dispatch(actions.set(['questions', questionId], questionData.set('answer', guessId)));
+    dispatch(actions.set(['questions', questionId], questionData.set(answerKey, guessId)));
 
-    const nextQuestion = questionData.get('next');
-    dispatch(actions.set(['questionCursor'], nextQuestion))
-    if (nextQuestion !== null) {
-      history.push(`/question/${nextQuestion + 1}`);
-    } else {
-      history.push('/synchronize');
+    if (assessmentType === 'individual') {
+      const nextQuestion = questionData.get('next');
+      dispatch(actions.set(['questionCursor'], nextQuestion))
+      if (nextQuestion !== null) {
+        history.push(`/question/${nextQuestion + 1}`);
+      } else {
+        history.push('/synchronize');
+      }
     }
   }
 });
