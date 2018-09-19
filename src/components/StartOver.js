@@ -6,7 +6,7 @@ import actions from '../actions';
 
 const StartOver = ({children, continueHandler, proceed, questions, startOverHandler}) => (
   <Row>
-    <Col>
+    <Col xs={12}>
         <p>
           <LinkContainer to="/">
             <Button onClick={startOverHandler(questions)} bsStyle="warning">Start Over</Button>
@@ -23,7 +23,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   startOverHandler: (questions) => (e) => {
+    dispatch(actions.set(['assessmentType'], 'individual'));
     dispatch(actions.set(['teamCode'], ''));
+    dispatch(actions.set(['userTeamCode'], ''));
     dispatch(actions.set(['questionCursor'], 0));
     dispatch(actions.set(['questions'], questions.map((question) => {
       return question.set('myAnswer', null).set('ourAnswer', null);

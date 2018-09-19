@@ -15,6 +15,7 @@ ReactDOM.render(
         <Route exact path="/" component={components.Intro} />
         <Route path="/question/:questionId" component={components.Question} />
         <Route path="/synchronize" component={components.Synchronize} />
+        <Route path="/summary" component={components.Summary} />
       </div>
     </Router>
   </Provider>,

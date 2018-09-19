@@ -21,7 +21,7 @@ const Intro = ({appState, handleChange, handleClick}) => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12}>
           <p>
             This application will take you through the steps to evaluate your own cognitive reflection. The process is simple:
           </p>
@@ -33,7 +33,7 @@ const Intro = ({appState, handleChange, handleClick}) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={2} xsOffset={5}>
+        <Col xs={6} xsOffset={3} md={4} mdOffset={4} lg={2} lgOffset={5}>
           <div className="centered">
             <FormGroup>
               <InputGroup>
@@ -45,7 +45,7 @@ const Intro = ({appState, handleChange, handleClick}) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={2} xsOffset={5}>
+        <Col xs={6} xsOffset={3} md={4} mdOffset={4} lg={2} lgOffset={5}>
           <p className="centered">
             <LinkContainer to="/question/1">
               <Button onClick={handleClick(userTeamCode)} bsStyle="success">Let&apos;s get started!</Button>

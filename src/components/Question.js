@@ -31,12 +31,12 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12}>
           <h2>Question #{match.params.questionId}</h2>
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12}>
           <Form>
             <p>
               {questionDataJS.text}
@@ -57,7 +57,7 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12}>
           <ProgressBar now={cursor} label={`${cursor}%`} srOnly active/>
         </Col>
       </Row>
