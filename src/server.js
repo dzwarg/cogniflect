@@ -7,24 +7,37 @@ var port = 5000;
 
 var users = {};
 
-var log = function() {
+var log = function log() {
   if (DEBUG) console.log.apply(console, arguments);
 }
 
-var getTeammates = function(teamCode) {
+var wrap = function wrap(fn, defaultReturn) {
+  return function wrapped() {
+    try {
+      return fn.apply(this, arguments);
+    }
+    catch (ex) {
+      log('** Exception caught in ' + fn.name + ':')
+      log(JSON.stringify(ex));
+      return defaultReturn;
+    }
+  };
+};
+
+var getTeammates = wrap(function getTeammates(teamCode) {
   return Object.keys(users).filter(function(user) {
     return users[user].teamCode === teamCode; 
   }).length;
-};
+}, 0);
 
-var getSyncedTeammates = function(teamCode) {
+var getSyncedTeammates = wrap(function getSyncedTeammates(teamCode) {
   return Object.keys(users).filter(function(user) {
     return (users[user].teamCode === teamCode) &&
       users[user].collab;
   }).length;
-};
+}, 0);
 
-var getAnswerCount = function(clientScore, teamCode) {
+var getAnswerCount = wrap(function getAnswerCount(clientScore, teamCode) {
   var teamUsers = Object.keys(users).filter(function(user) { 
     return users[user].teamCode === teamCode;
   });
@@ -36,12 +49,12 @@ var getAnswerCount = function(clientScore, teamCode) {
     questionId: clientScore.id,
     answerCount: answerCount
   };
-};
+}, 0);
 
 io.on('connection', function(socket){
   users[socket.id] = {};
   
-  socket.on('disconnect', function(){
+  socket.on('disconnect', wrap(function socketDisconnect(){
     log('disconnecting client', socket.id);
     var teamCode = users[socket.id].teamCode;
     socket.leave(teamCode);
@@ -50,9 +63,9 @@ io.on('connection', function(socket){
     io.to(teamCode).emit('member_count', getTeammates(teamCode));
     io.to(teamCode).emit('members_synced', getSyncedTeammates(teamCode));
     log('client disconnected');
-  });
+  }));
   
-  socket.on('register', function(teamCode) {
+  socket.on('register', wrap(function socketRegister(teamCode) {
     log('registering client', socket.id, 'with team', teamCode);
     users[socket.id] = {
       score: [],
@@ -66,9 +79,9 @@ io.on('connection', function(socket){
     // send all team members the size of the team
     io.to(teamCode).emit('member_count', getTeammates(teamCode));
     log('client registered');
-  });
+  }));
   
-  socket.on('score', function(score) {
+  socket.on('score', wrap(function socketScore(score) {
     log('scoring question', score.id, 'for client', socket.id);
     var teamCode = users[socket.id].teamCode;
     var userScore = {
@@ -83,16 +96,16 @@ io.on('connection', function(socket){
       io.to(teamCode).emit('answer_count', getAnswerCount(score, teamCode));
     }
     log('question scored');
-  });
+  }));
 
-  socket.on('synchronize', function(sync) {
+  socket.on('synchronize', wrap(function socketSynchronize(sync) {
     log('synchronizing client', socket.id);
     var teamCode = users[socket.id].teamCode;
     users[socket.id].collab = true;
 
     io.to(teamCode).emit('members_synced', getSyncedTeammates(teamCode));
     log('client synchronized');
-  });
+  }));
 });
 
 
