@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import './styles/bootstrap.min.css';
+import './styles/bootswatch-readability.min.css';
 import components from './components';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
