@@ -3,7 +3,7 @@ import { eventChannel } from 'redux-saga';
 import { call, cancel, fork, put, race, take} from 'redux-saga/effects';
 import actions from '../actions';
 
-const connect = () => {
+export const connect = () => {
   const socket = io();
   return new Promise(resolve => {
     socket.on('connect', () => {
@@ -12,7 +12,7 @@ const connect = () => {
   });
 };
 
-const subscribe = (socket) => {
+export const subscribe = (socket) => {
   return eventChannel(emit => {
     socket.on('member_count', (num) => {
       emit(actions.set(['team', 'members'], num));
@@ -23,14 +23,11 @@ const subscribe = (socket) => {
     socket.on('answer_count', ({questionId, answerCount}) => {
       emit(actions.set(['questions', questionId, 'teamAnswerCount'], answerCount));
     });
-    socket.on('disconnect', e => {
-      console.log('disconnected');
-    });
     return () => {};
   });
 };
 
-function* read(socket) {
+export const read = function* read(socket) {
   const channel = yield call(subscribe, socket);
   while (true) {
     let action = yield take(channel);
@@ -38,20 +35,20 @@ function* read(socket) {
   }
 }
 
-const scorePattern = (action) => {
+export const scorePattern = (action) => {
   // what is the data in an action that indicates that a score has been made?
   return (action.payload.path.length === 2) &&
     (action.payload.path[0] === 'questions') &&
     (action.payload.value.get('myAnswer') !== null);
 };
 
-const synchronizePattern = (action) => {
+export const synchronizePattern = (action) => {
   return (action.payload.path.length === 1) &&
     (action.payload.path[0] === 'questionCursor') &&
     (action.payload.value === null);
 };
 
-function* write(socket) {
+export const write = function* write(socket) {
   while (true) {
     const {score, sync} = yield race({
       score: take(scorePattern),
@@ -70,23 +67,23 @@ function* write(socket) {
   }
 }
 
-function* handleIO(socket) {
+export const handleIO = function* handleIO(socket) {
   yield fork(read, socket);
   yield fork(write, socket);
 }
 
-const registerPattern = (action) => {
+export const registerPattern = (action) => {
   return (action.payload.path.length === 1) &&
     (action.payload.path[0] === 'teamCode');
 };
 
-const restartPattern = (action) => {
+export const restartPattern = (action) => {
   return (action.payload.path.length === 1) &&
     (action.payload.path[0] === 'questionCursor' &&
     (action.payload.value === 0));
 };
 
-function* flow() {
+export const flow = function* flow() {
   while (true) {
     const registerAction = yield take(registerPattern);
     const teamCode = registerAction.payload.value;
@@ -107,6 +104,6 @@ function* flow() {
   }
 }
 
-export default function* rootSaga() {
+export const rootSaga = function* rootSaga() {
   yield fork(flow);
 }
