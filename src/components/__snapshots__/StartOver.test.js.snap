@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dumb component without crashing 1`] = `
+<Row
+  bsClass="row"
+  componentClass="div"
+>
+  <Col
+    bsClass="col"
+    componentClass="div"
+    xs={12}
+  >
+    <p>
+      <LinkContainer
+        activeClassName="active"
+        exact={false}
+        replace={false}
+        strict={false}
+        to="/"
+      >
+        <Button
+          active={false}
+          block={false}
+          bsClass="btn"
+          bsStyle="warning"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Start Over
+        </Button>
+      </LinkContainer>
+      <p>
+        Hello, World!
+      </p>
+    </p>
+  </Col>
+</Row>
+`;
+
+exports[`smart component matches snapshot 1`] = `
+<StartOver
+  questions={
+    Immutable.List [
+      Immutable.Map {
+        myAnswer: true,
+        ourAnswer: true,
+      },
+      Immutable.Map {
+        myAnswer: false,
+        ourAnswer: false,
+      },
+    ]
+  }
+  startOverHandler={[Function]}
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+/>
+`;

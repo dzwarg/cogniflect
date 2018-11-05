@@ -1,12 +1,12 @@
 import React from 'react';
-import StartOver from './StartOver';
+import {SmartComponent as StartOver} from './StartOver';
 import {Button, Checkbox, Col, Form, Grid, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import actions from '../actions';
 import {withRouter} from "react-router-dom";
 import {LinkContainer} from 'react-router-bootstrap';
 
-const Question = withRouter(({appState, changeHandler, history, match}) => {
+const Question = ({appState, changeHandler, history, match}) => {
   const questionId = parseInt(match.params.questionId, 10) - 1;
   const questionData = appState.get('questions').get(questionId);
   const questionDataJS = questionData.toJS();
@@ -17,16 +17,26 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
   const assessmentType = appState.get('assessmentType');
   const answerKey = (assessmentType === 'individual') ? 'myAnswer' : 'ourAnswer';
   
+  const collabText = (assessmentType === 'team') ?
+    (<p>{memberAnswers} of {totalMembers} team members have answered this question.</p>) :
+    null
   const nextLocation = (questionId + 1) === questionSize ? '/summary' : `/question/${questionDataJS.next + 1}`;
-  
+  const startOverChildren = (assessmentType === 'team') ? 
+        (<LinkContainer to={nextLocation}>
+          {
+            memberAnswers === totalMembers ?
+            <Button bsStyle="success">Next</Button> :
+            <Button bsStyle="success" disabled>Next</Button>
+          }
+        </LinkContainer>) :
+        null;
   return (
     <Grid>
       <Row>
         <Col>
           <Jumbotron>
             <h1 className="capitalized">{assessmentType} assessment</h1>
-            {(assessmentType === 'team') &&
-              <p>{memberAnswers} of {totalMembers} team members have answered this question.</p>}
+            {collabText}
           </Jumbotron>
         </Col>
       </Row>
@@ -62,19 +72,11 @@ const Question = withRouter(({appState, changeHandler, history, match}) => {
         </Col>
       </Row>
       <StartOver>
-        {assessmentType === 'team' &&
-          <LinkContainer to={nextLocation}>
-            {
-              memberAnswers === totalMembers ?
-              <Button bsStyle="success">Next</Button> :
-              <Button bsStyle="success" disabled>Next</Button>
-            }
-          </LinkContainer>
-        }
+        {startOverChildren}
       </StartOver>
     </Grid>
   );
-});
+};
 
 const mapStateToProps = (state) => ({
   appState: state.appState
@@ -98,4 +100,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
+export const DumbComponent = Question;
+export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(withRouter(Question));

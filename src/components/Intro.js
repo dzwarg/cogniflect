@@ -72,4 +72,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Intro);
+export const DumbComponent = Intro;
+export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(Intro);

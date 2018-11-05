@@ -4,7 +4,7 @@ import {LinkContainer} from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-const StartOver = ({children, continueHandler, proceed, questions, startOverHandler}) => (
+const StartOver = ({children, questions, startOverHandler}) => (
   <Row>
     <Col xs={12}>
         <p>
@@ -33,4 +33,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StartOver);
+export const DumbComponent = StartOver;
+export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(StartOver);

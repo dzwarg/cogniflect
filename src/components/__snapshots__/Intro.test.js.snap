@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dumb component without crashing 1`] = `
+<Grid
+  bsClass="container"
+  componentClass="div"
+  fluid={false}
+>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+    >
+      <Jumbotron
+        bsClass="jumbotron"
+        componentClass="div"
+      >
+        <h1>
+          This is the Cogniflector
+        </h1>
+        <p>
+          This application will ask you a short series of questions to you and your team.
+        </p>
+      </Jumbotron>
+    </Col>
+  </Row>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+      xs={12}
+    >
+      <p>
+        This application will take you through the steps to evaluate your own cognitive reflection. The process is simple:
+      </p>
+      <ol>
+        <li>
+          Answer a series of multiple choice questions individually.
+        </li>
+        <li>
+          Answer a series of multiple choice questions in groups of 3 or more.
+        </li>
+        <li>
+          The scores from step 
+          <b>
+            1
+          </b>
+           and 
+          <b>
+            2
+          </b>
+           are compared.
+        </li>
+      </ol>
+    </Col>
+  </Row>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+      lg={2}
+      lgOffset={5}
+      md={4}
+      mdOffset={4}
+      xs={6}
+      xsOffset={3}
+    >
+      <div
+        className="centered"
+      >
+        <FormGroup
+          bsClass="form-group"
+        >
+          <InputGroup
+            bsClass="input-group"
+          >
+            <InputGroupAddon
+              bsClass="input-group-addon"
+            >
+              #
+            </InputGroupAddon>
+            <FormControl
+              bsClass="form-control"
+              componentClass="input"
+              onChange={undefined}
+              placeholder="team code"
+              type="text"
+              value="foo"
+            />
+          </InputGroup>
+        </FormGroup>
+      </div>
+    </Col>
+  </Row>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+      lg={2}
+      lgOffset={5}
+      md={4}
+      mdOffset={4}
+      xs={6}
+      xsOffset={3}
+    >
+      <p
+        className="centered"
+      >
+        <LinkContainer
+          activeClassName="active"
+          exact={false}
+          replace={false}
+          strict={false}
+          to="/question/1"
+        >
+          <Button
+            active={false}
+            block={false}
+            bsClass="btn"
+            bsStyle="success"
+            disabled={false}
+            onClick={undefined}
+          >
+            Let's get started!
+          </Button>
+        </LinkContainer>
+      </p>
+    </Col>
+  </Row>
+</Grid>
+`;
+
+exports[`smart component matches snapshot 1`] = `
+<Intro
+  appState={
+    Immutable.Map {
+      userTeamCode: "foo",
+      teamCode: "foo",
+    }
+  }
+  handleChange={[Function]}
+  handleClick={[Function]}
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+/>
+`;
