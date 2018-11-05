@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dumb component enables "Continue" 1`] = `
+<Grid
+  bsClass="container"
+  componentClass="div"
+  fluid={false}
+>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+    >
+      <Jumbotron
+        bsClass="jumbotron"
+        componentClass="div"
+      >
+        <h1>
+          Waiting for team
+        </h1>
+        <p>
+          You're quick! Let's wait for the rest of your team.
+        </p>
+      </Jumbotron>
+    </Col>
+  </Row>
+  <Connect(StartOver)>
+    <LinkContainer
+      activeClassName="active"
+      exact={false}
+      replace={false}
+      strict={false}
+      to="/question/1"
+    >
+      <Button
+        active={false}
+        block={false}
+        bsClass="btn"
+        bsStyle="success"
+        disabled={false}
+        onClick={undefined}
+      >
+        Continue
+      </Button>
+    </LinkContainer>
+  </Connect(StartOver)>
+</Grid>
+`;
+
+exports[`dumb component matches snapshot 1`] = `
+<Grid
+  bsClass="container"
+  componentClass="div"
+  fluid={false}
+>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+    >
+      <Jumbotron
+        bsClass="jumbotron"
+        componentClass="div"
+      >
+        <h1>
+          Waiting for team
+        </h1>
+        <p>
+          You're quick! Let's wait for the rest of your team.
+        </p>
+      </Jumbotron>
+    </Col>
+  </Row>
+  <Connect(StartOver)>
+    <LinkContainer
+      activeClassName="active"
+      exact={false}
+      replace={false}
+      strict={false}
+      to="/question/1"
+    >
+      <Button
+        active={false}
+        block={false}
+        bsClass="btn"
+        bsStyle="success"
+        disabled={true}
+      >
+        Continue
+      </Button>
+    </LinkContainer>
+  </Connect(StartOver)>
+</Grid>
+`;
+
+exports[`smart component matches snapshot 1`] = `
+<Synchronize
+  continueHandler={[Function]}
+  proceed={false}
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+/>
+`;

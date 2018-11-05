@@ -1,7 +1,7 @@
 import {SmartComponent as Intro} from './Intro';
 import {SmartComponent as Question} from './Question';
-import Summary from './Summary';
-import Synchronize from './Synchronize';
+import {SmartComponent as Summary} from './Summary';
+import {SmartComponent as Synchronize} from './Synchronize';
 
 export default {
   Intro,
