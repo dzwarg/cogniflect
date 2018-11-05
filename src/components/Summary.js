@@ -1,5 +1,5 @@
 import React from 'react';
-import StartOver from './StartOver';
+import {SmartComponent as StartOver} from './StartOver';
 import {Col, Grid, Jumbotron, Row} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -51,4 +51,5 @@ const mapStateToProps = (state) => ({
   )).size
 });
 
-export default connect(mapStateToProps)(Summary);
+export const DumbComponent = Summary;
+export const SmartComponent = connect(mapStateToProps)(Summary);
