@@ -48,7 +48,7 @@ describe('connect function', () => {
     io.mockImplementation(() => testSocket);
     
     const result = connect();
-    result.then(done);
+    result.then(()=>{done()});
     
     testSocket.emit('connect');
   });

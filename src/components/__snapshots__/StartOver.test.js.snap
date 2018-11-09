@@ -42,19 +42,19 @@ exports[`smart component matches snapshot 1`] = `
   questions={
     Immutable.List [
       Immutable.Map {
-        myAnswer: true,
-        ourAnswer: true,
+        "myAnswer": true,
+        "ourAnswer": true,
       },
       Immutable.Map {
-        myAnswer: false,
-        ourAnswer: false,
+        "myAnswer": false,
+        "ourAnswer": false,
       },
     ]
   }
   startOverHandler={[Function]}
   store={
     Object {
-      "dispatch": [Function],
+      "dispatch": [MockFunction],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
@@ -69,7 +69,7 @@ exports[`smart component matches snapshot 1`] = `
       "onStateChange": [Function],
       "parentSub": undefined,
       "store": Object {
-        "dispatch": [Function],
+        "dispatch": [MockFunction],
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],

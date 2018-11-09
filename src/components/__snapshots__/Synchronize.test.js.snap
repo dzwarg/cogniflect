@@ -41,7 +41,6 @@ exports[`dumb component enables "Continue" 1`] = `
         bsClass="btn"
         bsStyle="success"
         disabled={false}
-        onClick={undefined}
       >
         Continue
       </Button>
