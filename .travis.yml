@@ -1,0 +1,28 @@
+# multiple tests suites
+# working example can be found at https://github.com/scottohara/loot
+
+language: node_js
+node_js:
+  - "8.12.0"
+
+# Cache
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+
+install:
+  - npm install
+
+before_script:
+  - ./cc-test-reporter before-build
+  
+script:
+  - npm run coverage
+
+# Pipe the coverage data to Code Climate
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
