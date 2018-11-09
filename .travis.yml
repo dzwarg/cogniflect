@@ -3,7 +3,7 @@
 
 language: node_js
 node_js:
-  - "lts/*"
+  - "8.12.0"
 
 # Cache
 cache:
@@ -25,4 +25,4 @@ script:
 
 # Pipe the coverage data to Code Climate
 after_script:
-  - - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
