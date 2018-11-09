@@ -4,7 +4,21 @@ import {eventChannel} from 'redux-saga';
 
 jest.mock('socket.io-client');
 jest.mock('redux-saga', () => ({
-  eventChannel: (channelFn) => channelFn
+  eventChannel: (channelFn) => {
+//     console.log('mock eventChannel:', channelFn);
+    return channelFn;
+  }
+}));
+jest.mock('redux-saga/effects', () => ({
+  call: jest.fn((fn, ...args) => {
+    console.log(fn, args);
+    return fn.apply(null, args)
+  }),
+  take: jest.fn(() => ({
+    type: 'TEST_ACTION',
+    payload: {foo: 'bar'}
+  })),
+  put: jest.fn()
 }));
 
 const mockSocket = () => {
@@ -18,6 +32,14 @@ const mockSocket = () => {
     }
   }
 };
+
+const mockEmit = jest.fn();
+
+const mockChannel = () => ({
+  close: jest.fn(),
+  flush: jest.fn((cb)=>cb()),
+  take: jest.fn((cb)=>cb({type:'test action', payload:{}}))
+});
 
 describe('connect function', () => {
   it('resolves promise', (done) => {
@@ -33,15 +55,17 @@ describe('connect function', () => {
 });
 
 describe('subscribe function', () => {
+  beforeEach(() => {
+    mockEmit.mockReset();
+  });
+  
   it('returns an empty fn', () => {
-    const mockEmit = jest.fn();
     const channel = subscribe(mockSocket());
     
     expect(channel(mockEmit)()).toBe(undefined);
   });
   
   it('emits member count', () => {
-    const mockEmit = jest.fn();
     const testSocket = mockSocket();
     const channel = subscribe(testSocket);
     
@@ -52,7 +76,6 @@ describe('subscribe function', () => {
   });
 
   it('emits members synced', () => {
-    const mockEmit = jest.fn();
     const testSocket = mockSocket();
     const channel = subscribe(testSocket);
     
@@ -63,7 +86,6 @@ describe('subscribe function', () => {
   });
 
   it('emits answer count', () => {
-    const mockEmit = jest.fn();
     const testSocket = mockSocket();
     const channel = subscribe(testSocket);
     
@@ -76,6 +98,12 @@ describe('subscribe function', () => {
 
 // describe('read generator function', () => {
 //   it('calls subscribe', () => {
-//     read(testSocket);
+//     const testSocket = mockSocket();
+//     const iter = read(testSocket);
+//     var item = null;
+//     while (item = iter.next()) {
+//       console.log(item);
+//       if (item.done) break;
+//     }
 //   });
 // });
