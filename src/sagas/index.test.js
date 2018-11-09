@@ -11,14 +11,13 @@ jest.mock('redux-saga', () => ({
 }));
 jest.mock('redux-saga/effects', () => ({
   call: jest.fn((fn, ...args) => {
-    console.log(fn, args);
     return fn.apply(null, args)
   }),
   take: jest.fn(() => ({
     type: 'TEST_ACTION',
     payload: {foo: 'bar'}
   })),
-  put: jest.fn()
+  put: jest.fn(() => {})
 }));
 
 const mockSocket = () => {
@@ -96,14 +95,23 @@ describe('subscribe function', () => {
   });
 });
 
-// describe('read generator function', () => {
-//   it('calls subscribe', () => {
-//     const testSocket = mockSocket();
-//     const iter = read(testSocket);
-//     var item = null;
-//     while (item = iter.next()) {
-//       console.log(item);
-//       if (item.done) break;
-//     }
-//   });
-// });
+describe('read generator function', () => {
+  it('calls subscribe', () => {
+    const testSocket = mockSocket();
+    const iter = read(testSocket);
+    const channel = iter.next();
+    
+    expect(channel.done).toBe(false);
+    expect(typeof channel.value).toBe('function');
+    
+    const action = iter.next();
+    
+    expect(action.done).toBe(false);
+    expect(action.value.type).toBe('TEST_ACTION');
+    
+    const put = iter.next();
+    
+    expect(put.done).toBe(false);
+    expect(typeof put.value).toBe('undefined');
+  });
+});

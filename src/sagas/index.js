@@ -29,7 +29,6 @@ export const subscribe = (socket) => {
 
 export const read = function* read(socket) {
   const channel = yield call(subscribe, socket);
-  console.log(channel);
   while (true) {
     let action = yield take(channel);
     yield put(action);
