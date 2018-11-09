@@ -22,6 +22,8 @@ before_script:
   
 script:
   - npm run coverage
+  - npm audit
+  - npx npm-check-updates
 
 # Pipe the coverage data to Code Climate
 after_script:

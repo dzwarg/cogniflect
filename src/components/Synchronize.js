@@ -1,5 +1,5 @@
 import React from 'react';
-import StartOver from './StartOver';
+import {SmartComponent as StartOver} from './StartOver';
 import {Button, Col, Grid, Jumbotron, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import { connect } from 'react-redux';
@@ -41,4 +41,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Synchronize);
+export const DumbComponent = Synchronize;
+export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(Synchronize);

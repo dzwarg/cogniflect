@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dumb component matches snapshot 1`] = `
+<Grid
+  bsClass="container"
+  componentClass="div"
+  fluid={false}
+>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+    >
+      <Jumbotron
+        bsClass="jumbotron"
+        componentClass="div"
+      >
+        <h1>
+          Quiz Summary
+        </h1>
+        <p>
+          Research has demonstrated that people perform better as teams for these types of tasks. Typical results are 15% accuracy for individuals, and 100% accuracy for groups. How did you fare?
+        </p>
+      </Jumbotron>
+    </Col>
+  </Row>
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+      md={6}
+      xs={12}
+    >
+      <h2>
+        Individually
+      </h2>
+      <h3>
+        Score: 
+        NaN %
+      </h3>
+      <p>
+        You answered 
+         out of 
+         correctly.
+      </p>
+    </Col>
+    <Col
+      bsClass="col"
+      componentClass="div"
+      md={6}
+      xs={12}
+    >
+      <h2>
+        Collaboratively
+      </h2>
+      <h3>
+        Score: 
+        NaN %
+      </h3>
+      <p>
+        Your team answered 
+         out of 
+         correctly.
+      </p>
+    </Col>
+  </Row>
+  <Connect(StartOver) />
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      componentClass="div"
+      xs={12}
+    >
+      <h2>
+        References
+      </h2>
+      <ul>
+        <li>
+          <a
+            href="http://journal.sjdm.org/15/151029/jdm151029.html"
+          >
+            Investigating an alternate form of the cognitive reflection test
+          </a>
+           (
+          <a
+            href="http://journal.sjdm.org/vol11.1.html"
+          >
+            Judgment and Decision Making, Vol. 11, No. 1
+          </a>
+          )
+        </li>
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/Cognitive_reflection_test"
+          >
+            Cognitive Reflection Test
+          </a>
+           (Wikipedia)
+        </li>
+      </ul>
+    </Col>
+  </Row>
+</Grid>
+`;
+
+exports[`smart component matches snapshot 1`] = `
+<Summary
+  dispatch={[Function]}
+  individualCorrect={1}
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+  teamCorrect={1}
+  totalQuestions={2}
+/>
+`;

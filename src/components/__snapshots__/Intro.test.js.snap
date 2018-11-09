@@ -91,7 +91,6 @@ exports[`dumb component without crashing 1`] = `
             <FormControl
               bsClass="form-control"
               componentClass="input"
-              onChange={undefined}
               placeholder="team code"
               type="text"
               value="foo"
@@ -131,7 +130,6 @@ exports[`dumb component without crashing 1`] = `
             bsClass="btn"
             bsStyle="success"
             disabled={false}
-            onClick={undefined}
           >
             Let's get started!
           </Button>
@@ -146,8 +144,8 @@ exports[`smart component matches snapshot 1`] = `
 <Intro
   appState={
     Immutable.Map {
-      userTeamCode: "foo",
-      teamCode: "foo",
+      "userTeamCode": "foo",
+      "teamCode": "foo",
     }
   }
   handleChange={[Function]}
