@@ -56,13 +56,9 @@ export const write = function* write(socket) {
     });
     
     if (score) {
-      console.log('emitting "score"');
       socket.emit('score', score.payload.value);
-      console.log('emitted "score"');
     } else if (sync) {
-      console.log('emitting "synchronize"');
       socket.emit('synchronize', sync.payload.value);
-      console.log('emitted "synchronize"');
     }
   }
 }
@@ -87,19 +83,13 @@ export const flow = function* flow() {
   while (true) {
     const registerAction = yield take(registerPattern);
     const teamCode = registerAction.payload.value;
-    console.log('[socket] connecting');
     const socket = yield call(connect);
-    console.log('[socket] connected');
     socket.emit('register', teamCode);
-    console.log('[socket] registered');
 
     const task = yield fork(handleIO, socket);
-    console.log('[socket] I/O running');
     const restartAction = yield take(restartPattern);
-    console.log('[socket] cancelling I/O');
     yield cancel(task);
 
-    console.log('[socket] synchronized');
     socket.emit('restart', restartAction);
   }
 }
