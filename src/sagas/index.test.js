@@ -1,25 +1,35 @@
-import {connect, subscribe, read} from './index';
+import {
+  connect,
+  read,
+  scorePattern,
+  subscribe,
+  synchronizePattern,
+  write
+} from './index';
 import io from 'socket.io-client';
 import {eventChannel} from 'redux-saga';
+import {Map} from 'immutable';
+import {race} from 'redux-saga/effects';
 
 jest.mock('socket.io-client');
 jest.mock('redux-saga', () => ({
   eventChannel: (channelFn) => {
-//     console.log('mock eventChannel:', channelFn);
     return channelFn;
   }
 }));
-jest.mock('redux-saga/effects', () => ({
-  call: jest.fn((fn, ...args) => {
-    console.log(fn, args);
-    return fn.apply(null, args)
-  }),
-  take: jest.fn(() => ({
-    type: 'TEST_ACTION',
-    payload: {foo: 'bar'}
-  })),
-  put: jest.fn()
-}));
+jest.mock('redux-saga/effects', () => {
+  return {
+    call: jest.fn((fn, ...args) => {
+      return fn.apply(null, args)
+    }),
+    take: jest.fn(() => ({
+      type: 'TEST_ACTION',
+      payload: {foo: 'bar'}
+    })),
+    put: jest.fn(() => {}),
+    race: jest.fn()
+  };
+});
 
 const mockSocket = () => {
   const events = {};
@@ -96,14 +106,122 @@ describe('subscribe function', () => {
   });
 });
 
-// describe('read generator function', () => {
-//   it('calls subscribe', () => {
-//     const testSocket = mockSocket();
-//     const iter = read(testSocket);
-//     var item = null;
-//     while (item = iter.next()) {
-//       console.log(item);
-//       if (item.done) break;
-//     }
-//   });
-// });
+describe('read generator function', () => {
+  it('calls subscribe', () => {
+    const testSocket = mockSocket();
+    const iter = read(testSocket);
+    const channel = iter.next();
+    
+    expect(channel.done).toBe(false);
+    expect(typeof channel.value).toBe('function');
+    
+    const action = iter.next();
+    
+    expect(action.done).toBe(false);
+    expect(action.value.type).toBe('TEST_ACTION');
+    
+    const put = iter.next();
+    
+    expect(put.done).toBe(false);
+    expect(typeof put.value).toBe('undefined');
+  });
+});
+
+describe('scorePattern matching function', () => {
+  it('matches a score action', () => {
+    const action = {
+      payload: {
+        path: ['questions', 'index'],
+        value: Map({myAnswer: 'not null'})
+      }
+    };
+    expect(scorePattern(action)).toBe(true);
+  });
+  
+  it('does not match a score action with incorrect path', () => {
+    const action = {
+      payload: {
+        path: ['questions' /*, 'missing!' */],
+        value: Map({myAnswer: 'not null'})
+      }
+    };
+    expect(scorePattern(action)).toBe(false);
+  });
+
+  it('does not match a score action with a null value', () => {
+    const action = {
+      payload: {
+        path: ['questions', 'index'],
+        value: Map({myAnswer: null})
+      }
+    };
+    expect(scorePattern(action)).toBe(false);
+  });
+});
+
+describe('synchronizePattern matching function', () => {
+  it('matches a synchronize action', () => {
+    const action = {
+      payload: {
+        path: ['questionCursor'],
+        value: null
+      }
+    };
+    expect(synchronizePattern(action)).toBe(true);
+  });
+  
+  it('does not match a synchronize action with incorrect path', () => {
+    const action = {
+      payload: {
+        path: [/*'missing!'*/],
+        value: null
+      }
+    };
+    expect(synchronizePattern(action)).toBe(false);
+  });
+
+  it('does not match a synchronize action with a non-null value', () => {
+    const action = {
+      payload: {
+        path: ['questionCursor'],
+        value: 1
+      }
+    };
+    expect(synchronizePattern(action)).toBe(false);
+  });
+});
+
+describe('write generator function', () => {
+  it('races to score', (done) => {
+    const testSocket = mockSocket();
+    const payloadExpect = {foo:'bar'};
+    testSocket.on('score', (payloadActual) => {
+      expect(payloadExpect).toEqual(payloadActual);
+      done();
+    });
+    
+    const iter = write(testSocket);
+
+    // start the race
+    iter.next();
+    
+    expect(iter.next({score: {type: 'SCORE_ACTION', payload: {value: payloadExpect}}}).done).toBe(false);
+  });
+
+  it('races to sync', (done) => {
+    const testSocket = mockSocket();
+    const payloadExpect = {foo:'bar'};
+    testSocket.on('synchronize', (payloadActual) => {
+      expect(payloadExpect).toEqual(payloadActual);
+      done();
+    });
+    
+    const iter = write(testSocket);
+
+    // start the race
+    iter.next();
+    
+    expect(iter.next({sync: {type: 'SYNC_ACTION', payload: {value: payloadExpect}}}).done).toBe(false);
+  });
+
+});
