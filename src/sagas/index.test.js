@@ -1,6 +1,11 @@
 import {
   connect,
+  flow,
+  handleIO,
   read,
+  registerPattern,
+  restartPattern,
+  rootSaga,
   scorePattern,
   subscribe,
   synchronizePattern,
@@ -22,12 +27,14 @@ jest.mock('redux-saga/effects', () => {
     call: jest.fn((fn, ...args) => {
       return fn.apply(null, args)
     }),
+    cancel: jest.fn(),
+    fork: jest.fn(),
+    put: jest.fn(() => {}),
+    race: jest.fn(),
     take: jest.fn(() => ({
       type: 'TEST_ACTION',
-      payload: {foo: 'bar'}
-    })),
-    put: jest.fn(() => {}),
-    race: jest.fn()
+      payload: {foo: 'bar', value: 'bananas'}
+    }))
   };
 });
 
@@ -224,4 +231,135 @@ describe('write generator function', () => {
     expect(iter.next({sync: {type: 'SYNC_ACTION', payload: {value: payloadExpect}}}).done).toBe(false);
   });
 
+});
+
+describe('handleIO generator function', () => {
+  it('forks to read', () => {
+    const testSocket = mockSocket();
+    const iter = handleIO(testSocket);
+    
+    // fork once
+    const fork1 = iter.next();
+    expect(fork1.done).toBe(false);
+    
+    const fork2 = iter.next();
+    expect(fork2.done).toBe(false);
+  });
+});
+
+describe('registerPattern matching function', () => {
+  it('matches a register action', () => {
+    const action = {
+      payload: {
+        path: ['teamCode']
+      }
+    };
+    expect(registerPattern(action)).toBe(true);
+  });
+  
+  it('does not match a register action with incorrect path length', () => {
+    const action = {
+      payload: {
+        path: ['teamCode', 'extra']
+      }
+    };
+    expect(registerPattern(action)).toBe(false);
+  });
+
+  it('does not match a register action with an incorrect path', () => {
+    const action = {
+      payload: {
+        path: ['notTeamCode']
+      }
+    };
+    expect(registerPattern(action)).toBe(false);
+  });
+});
+
+describe('restartPattern matching function', () => {
+  it('matches a restart action', () => {
+    const action = {
+      payload: {
+        path: ['questionCursor'],
+        value: 0
+      }
+    };
+    expect(restartPattern(action)).toBe(true);
+  });
+  
+  it('does not match a restart action with incorrect path length', () => {
+    const action = {
+      payload: {
+        path: ['question', 'cursor'],
+        value: 0
+      }
+    };
+    expect(restartPattern(action)).toBe(false);
+  });
+
+  it('does not match a restart action with an incorrect path', () => {
+    const action = {
+      payload: {
+        path: ['cursorDeLaQuestiones'],
+        value: 0
+      }
+    };
+    expect(restartPattern(action)).toBe(false);
+  });
+
+  it('does not match a restart action with an incorrect value', () => {
+    const action = {
+      payload: {
+        path: ['questionCursor'],
+        value: 1
+      }
+    };
+    expect(restartPattern(action)).toBe(false);
+  });
+});
+
+describe('flow generator function', () => {
+  it('performs a basic flow', () => {
+    const iter = flow();
+    const registerAction = {
+      payload: {
+        path: ['teamCode']
+      }
+    };
+    const item1 = iter.next(registerAction);
+    expect(item1.value.type).toBe('TEST_ACTION');
+    iter.next(registerAction);
+
+    const socket = mockSocket();
+    const registerSpy = jest.fn();
+    socket.on('register', registerSpy)
+    const item2 = iter.next(socket);
+    expect(registerSpy.mock.calls.length).toBe(1);
+    
+    const item3 = iter.next();
+    expect(item3.value.type).toBe('TEST_ACTION');
+    
+    const restartAction = {
+      payload: {
+        path: ['questionCursor'],
+        value: 0
+      }
+    };
+    const item4 = iter.next(restartAction);
+    expect(item4.done).toBe(false);
+    
+    const restartSpy = jest.fn();
+    socket.on('restart', restartSpy);
+    const item5 = iter.next();
+    expect(restartSpy.mock.calls.length).toBe(1);
+  });
+});
+
+describe('rootSaga generator function', () => {
+  it('yields something', () => {
+    const iter = rootSaga();
+    const item1 = iter.next();
+    
+    expect(item1.done).toBe(false);
+  });
 });

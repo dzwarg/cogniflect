@@ -45,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run coverage && npm audit"
+      "pre-commit": "npm run coverage"
     }
   }
 }

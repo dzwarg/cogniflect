@@ -22,7 +22,7 @@ before_script:
   
 script:
   - npm run coverage
-  - npm audit
+  - echo "npm audit" is disabled
   - npx npm-check-updates
 
 # Pipe the coverage data to Code Climate
