@@ -57,7 +57,7 @@ export const write = function* write(socket) {
     
     if (score) {
       socket.emit('score', score.payload.value);
-    } else if (sync) {
+    } else /*if (sync)*/ {
       socket.emit('synchronize', sync.payload.value);
     }
   }
