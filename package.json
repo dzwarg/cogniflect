@@ -37,15 +37,16 @@
     "start-webapp": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
-  "proxy": {
-    "/socket.io": {
-      "target": "ws://localhost:5000/socket.io",
-      "ws": true
-    }
-  },
+  "proxy": "http://localhost:5000/",
   "husky": {
     "hooks": {
       "pre-commit": "npm run coverage"
     }
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
