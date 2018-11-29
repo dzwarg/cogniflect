@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/bootswatch-readability.min.css';
 import components from './components';
-import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import configureStore from './store';
@@ -20,4 +19,3 @@ ReactDOM.render(
     </Router>
   </Provider>,
   document.getElementById('root'));
-registerServiceWorker();
