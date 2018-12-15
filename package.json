@@ -1,6 +1,6 @@
 {
   "name": "cogniflect",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "concurrently": "^4.1.0",
@@ -22,18 +22,22 @@
     "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "husky": "1.2.0",
     "react-test-renderer": "^16.6.3"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "concurrently \"npm:build-*\"",
+    "build-socketserver": "babel src/lib -d dist -s --ignore \"src/**/*.test.js\"",
+    "build-webapp": "react-scripts build",
     "check-updates": "ncu",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "start": "concurrently \"npm:start-*\"",
-    "start-socketserver": "nodemon -w src/server.js src/server.js",
+    "start-socketserver": "nodemon -w dist/server.js dist/index.js",
     "start-webapp": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },

@@ -1,17 +1,21 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var DEBUG = process.env.COGNIFLECT_DEBUG;
+import express from 'express';
+import http from 'http';
+import SocketIO from 'socket.io';
 
-var port = 5000;
+const app = express();
+const server = http.Server(app);
+const io = new SocketIO(server);
+const DEBUG = process.env.COGNIFLECT_DEBUG;
 
-var users = {};
+const port = 5000;
 
-var log = function log() {
+const users = {};
+
+export const log = function log() {
   if (DEBUG) console.log.apply(console, arguments);
 }
 
-var wrap = function wrap(fn, defaultReturn) {
+export const wrap = function wrap(fn, defaultReturn) {
   return function wrapped() {
     try {
       return fn.apply(this, arguments);
@@ -24,25 +28,25 @@ var wrap = function wrap(fn, defaultReturn) {
   };
 };
 
-var getTeammates = wrap(function getTeammates(teamCode) {
+export const getTeammates = wrap(function getTeammates(teamCode) {
   return Object.keys(users).filter(function(user) {
     return users[user].teamCode === teamCode; 
   }).length;
 }, 0);
 
-var getSyncedTeammates = wrap(function getSyncedTeammates(teamCode) {
+export const getSyncedTeammates = wrap(function getSyncedTeammates(teamCode) {
   return Object.keys(users).filter(function(user) {
     return (users[user].teamCode === teamCode) &&
       users[user].collab;
   }).length;
 }, 0);
 
-var getAnswerCount = wrap(function getAnswerCount(clientScore, teamCode) {
-  var teamUsers = Object.keys(users).filter(function(user) { 
+export const getAnswerCount = wrap(function getAnswerCount(clientScore, teamCode) {
+  const teamUsers = Object.keys(users).filter(function(user) { 
     return users[user].teamCode === teamCode;
   });
-  var answerCount = teamUsers.reduce(function(acc, user){
-    var incr = (users[user].score[clientScore.id].ourAnswer !== null) ? 1 : 0;
+  const answerCount = teamUsers.reduce(function(acc, user){
+    const incr = (users[user].score[clientScore.id].ourAnswer !== null) ? 1 : 0;
     return acc + incr;
   }, 0);
   return {
@@ -51,12 +55,12 @@ var getAnswerCount = wrap(function getAnswerCount(clientScore, teamCode) {
   };
 }, 0);
 
-io.on('connection', function(socket){
+export const handleConnection = wrap(function handleConnection(socket) {
   users[socket.id] = {};
   
   socket.on('disconnect', wrap(function socketDisconnect(){
     log('disconnecting client', socket.id);
-    var teamCode = users[socket.id].teamCode;
+    const teamCode = users[socket.id].teamCode;
     socket.leave(teamCode);
     delete users[socket.id];
     
@@ -83,8 +87,8 @@ io.on('connection', function(socket){
   
   socket.on('score', wrap(function socketScore(score) {
     log('scoring question', score.id, 'for client', socket.id);
-    var teamCode = users[socket.id].teamCode;
-    var userScore = {
+    const teamCode = users[socket.id].teamCode;
+    const userScore = {
       id: score.id,
       myAnswer: score.myAnswer,
       ourAnswer: score.ourAnswer,
@@ -100,15 +104,18 @@ io.on('connection', function(socket){
 
   socket.on('synchronize', wrap(function socketSynchronize(sync) {
     log('synchronizing client', socket.id);
-    var teamCode = users[socket.id].teamCode;
+    const teamCode = users[socket.id].teamCode;
     users[socket.id].collab = true;
 
     io.to(teamCode).emit('members_synced', getSyncedTeammates(teamCode));
     log('client synchronized');
   }));
-});
+}, 0);
 
+export const start = () => {
+  io.on('connection', handleConnection);
 
-http.listen(port, function(){
-  console.log('listening on *:' + port);
-});
+  server.listen(port, function(){
+    console.log('listening on *:' + port);
+  });
+};
