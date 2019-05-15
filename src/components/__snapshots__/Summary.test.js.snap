@@ -16,11 +16,13 @@ exports[`components/Summary matches snapshot 1`] = `
   </ForwardRef(Bootstrap(Row))>
   <ForwardRef(Bootstrap(Row))>
     <ScoreBlock
-      score={NaN}
+      correct={2}
+      total={6}
       type="Individually"
     />
     <ScoreBlock
-      score={NaN}
+      correct={4}
+      total={6}
       type="Collaboratively"
     />
   </ForwardRef(Bootstrap(Row))>

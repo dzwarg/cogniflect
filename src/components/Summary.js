@@ -1,15 +1,8 @@
-import React from 'react';
-import StartOver from './StartOver';
-import {Col, Container, Jumbotron, Row} from 'react-bootstrap';
+import React from 'react'
+import StartOver from './StartOver'
+import ScoreBlock from './ScoreBlock'
+import {Col, Container, Jumbotron, Row} from 'react-bootstrap'
 
-const fmt = (val) => (`${(100 * val).toFixed(2)} %`);
-const ScoreBlock = ({type, score, correct, total}) => (
-  <Col xs={12} md={6}>
-    <h2>{type}</h2>
-    <h3>Score: {fmt(score)}</h3>
-    <p>You answered {correct} out of {total} correctly.</p>
-  </Col>
-)
 const Summary = ({individualCorrect, teamCorrect, totalQuestions}) => (
   <Container>
     <Row>
@@ -23,8 +16,8 @@ const Summary = ({individualCorrect, teamCorrect, totalQuestions}) => (
       </Col>
     </Row>
     <Row>
-      <ScoreBlock type={'Individually'} score={individualCorrect/totalQuestions} correct={individualCorrect} total={totalQuestions} />
-      <ScoreBlock type={'Collaboratively'} score={teamCorrect/totalQuestions} correct={teamCorrect} total={totalQuestions} />
+      <ScoreBlock type={'Individually'} correct={individualCorrect} total={totalQuestions} />
+      <ScoreBlock type={'Collaboratively'} correct={teamCorrect} total={totalQuestions} />
     </Row>
     <StartOver />
     <Row>
@@ -37,6 +30,6 @@ const Summary = ({individualCorrect, teamCorrect, totalQuestions}) => (
       </Col>
     </Row>
   </Container>
-);
+)
 
-export default Summary;
+export default Summary

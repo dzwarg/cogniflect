@@ -17,8 +17,8 @@ const initialState = {
   })
 };
 
-describe('dumb component', () => {
-  it('without crashing', () => {
+describe('component/StartOver', () => {
+  it('matches snapshot', () => {
     const component = StartOver({...initialState, startOverHandler:jest.fn()})
     expect(component).toMatchSnapshot();
   });

@@ -27,6 +27,16 @@ const Question = ({appState, changeHandler, history, match}) => {
           }
         </LinkContainer>) :
         null;
+  const guessCheck = ({id, text}) => {
+    const checkProps = {
+      onChange: changeHandler(questionData, questionId, assessmentType, answerKey, id, history),
+      checked: (id === questionDataJS[answerKey])
+    }
+
+    return (
+     <li key={id}><Form.Check type="checkbox" {...checkProps}>{text}</Form.Check></li>
+    );
+  }
   return (
     <Container>
       <Row>
@@ -49,16 +59,7 @@ const Question = ({appState, changeHandler, history, match}) => {
               {questionDataJS.text}
             </p>
             <ul>
-              {questionDataJS.guesses.map((guess) => {
-                const checkProps = {
-                  onChange: changeHandler(questionData, questionId, assessmentType, answerKey, guess.id, history),
-                  checked: (guess.id === questionDataJS[answerKey])
-                }
-    
-                return (
-                 <li key={guess.id}><Form.Check type="checkbox" {...checkProps}>{guess.text}</Form.Check></li>
-                );
-              })}
+              {questionDataJS.guesses.map(guessCheck)}
             </ul>
           </Form>
         </Col>

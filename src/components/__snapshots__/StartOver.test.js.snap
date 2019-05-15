@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dumb component without crashing 1`] = `
+exports[`component/StartOver matches snapshot 1`] = `
 <ForwardRef(Bootstrap(Row))>
   <ForwardRef(Bootstrap(Col))
     xs={12}

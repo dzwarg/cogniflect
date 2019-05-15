@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dumb component without crashing 1`] = `
+exports[`components/Intro matches snapshot 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>

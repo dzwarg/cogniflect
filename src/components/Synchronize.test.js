@@ -14,9 +14,9 @@ const initialState = {
   })
 };
 
-describe('dumb component', () => {
+describe('components/Synchronize', () => {
   it('matches snapshot', () => {
-    const component = Synchronize({...initialState})
+    const component = Synchronize(initialState)
     expect(component).toMatchSnapshot();
   });
   

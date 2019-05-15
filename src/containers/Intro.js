@@ -2,11 +2,9 @@ import { connect } from 'react-redux'
 import actions from '../actions'
 import Intro from '../components/Intro'
 
-const mapStateToProps = (state) => {
-  return {
-    appState: state.appState
-  }
-}
+const mapStateToProps = (state) => ({
+  appState: state.appState
+})
 
 const mapDispatchToProps = (dispatch) => ({
   handleChange: (evt) => {

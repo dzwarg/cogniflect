@@ -45,8 +45,8 @@ const initialState = {
   })
 };
 
-describe('dumb component', () => {
-  it('renders for individual', () => {
+describe('components/Question', () => {
+  it('matches snapshot for individual', () => {
     const component = Question({
       ...initialState,
       changeHandler: ()=>{},
@@ -55,7 +55,7 @@ describe('dumb component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('renders for team', () => {
+  it('matches snapshot for team', () => {
     const teamState = {
       appState: initialState.appState.set('assessmentType', 'team')
     };
@@ -67,7 +67,7 @@ describe('dumb component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('renders team last question', () => {
+  it('matches snapshot for team last question', () => {
     const teamState = {
       appState: initialState.appState
         .set('assessmentType', 'team')
@@ -80,7 +80,7 @@ describe('dumb component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('renders team all answered', () => {
+  it('matches snapshot for team all answered', () => {
     const teamState = {
       appState: initialState.appState
         .set('assessmentType', 'team')

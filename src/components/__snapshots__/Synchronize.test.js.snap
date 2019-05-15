@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dumb component enables "Continue" 1`] = `
+exports[`components/Synchronize enables "Continue" 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>
@@ -32,7 +32,7 @@ exports[`dumb component enables "Continue" 1`] = `
 </ForwardRef(Bootstrap(Container))>
 `;
 
-exports[`dumb component matches snapshot 1`] = `
+exports[`components/Synchronize matches snapshot 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>

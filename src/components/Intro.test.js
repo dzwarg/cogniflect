@@ -6,8 +6,8 @@ import {Map} from 'immutable';
 
 const initialState = {appState: Map({userTeamCode: 'foo', teamCode: 'foo'})};
 
-describe('dumb component', () => {
-  it('without crashing', () => {
+describe('components/Intro', () => {
+  it('matches snapshot', () => {
     const component = Intro({...initialState, handleClick:()=>{}})
     expect(component).toMatchSnapshot();
   });

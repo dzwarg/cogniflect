@@ -1,19 +1,10 @@
 import React from 'react'
 import Summary from './Summary'
-import {fromJS} from 'immutable'
 
 const initialState = {
-  appState: fromJS({
-    questions: [{
-      myAnswer: true,
-      ourAnswer: false,
-      truth: true,
-    },{
-      myAnswer: false,
-      ourAnswer: true,
-      truth: true
-    }]    
-  })
+  individualCorrect: 2,
+  teamCorrect: 4,
+  totalQuestions: 6
 }
 
 describe('components/Summary', () => {

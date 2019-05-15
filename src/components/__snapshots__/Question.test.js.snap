@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dumb component renders for individual 1`] = `
+exports[`components/Question matches snapshot for individual 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>
@@ -85,7 +85,7 @@ exports[`dumb component renders for individual 1`] = `
 </ForwardRef(Bootstrap(Container))>
 `;
 
-exports[`dumb component renders for team 1`] = `
+exports[`components/Question matches snapshot for team 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>
@@ -190,7 +190,7 @@ exports[`dumb component renders for team 1`] = `
 </ForwardRef(Bootstrap(Container))>
 `;
 
-exports[`dumb component renders team all answered 1`] = `
+exports[`components/Question matches snapshot for team all answered 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>
@@ -296,7 +296,7 @@ exports[`dumb component renders team all answered 1`] = `
 </ForwardRef(Bootstrap(Container))>
 `;
 
-exports[`dumb component renders team last question 1`] = `
+exports[`components/Question matches snapshot for team last question 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))>
