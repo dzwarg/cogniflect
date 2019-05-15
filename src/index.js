@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import './styles/bootswatch-readability.min.css';
+import './styles/bootswatch-spacelab.min.css';
 import containers from './containers';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";

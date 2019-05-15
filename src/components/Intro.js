@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Container, FormControl, FormGroup, InputGroup, Jumbotron, Row} from 'react-bootstrap';
+import {Button, Col, Container, FormControl, InputGroup, Jumbotron, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import '../styles/Intro.css';
 
@@ -31,22 +31,22 @@ const Intro = ({appState, handleChange, handleClick}) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={6} xsOffset={3} md={4} mdOffset={4} lg={2} lgOffset={5}>
-          <div className="centered">
-            <FormGroup>
-              <InputGroup>
-                <InputGroup.Prepend>#</InputGroup.Prepend>
-                <FormControl type="text" placeholder="team code" onChange={handleChange} value={userTeamCode} />
-              </InputGroup>
-            </FormGroup>
-          </div>
+        <Col xs={{span:6,offset:3}} md={{span:4,offset:4}} lg={{span:2,offset:5}}>
+          <p>
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text>#</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl type="text" placeholder="team code" onChange={handleChange} value={userTeamCode} />
+            </InputGroup>
+          </p>
         </Col>
       </Row>
       <Row>
-        <Col xs={6} xsOffset={3} md={4} mdOffset={4} lg={2} lgOffset={5}>
+        <Col xs={{span:6,offset:3}} md={{span:4,offset:4}} lg={{span:2,offset:5}}>
           <p className="centered">
             <LinkContainer to="/question/1">
-              <Button onClick={handleClick(userTeamCode)} bsStyle="success">Let&apos;s get started!</Button>
+              <Button onClick={handleClick(userTeamCode)} variant="success">Let&apos;s get started!</Button>
             </LinkContainer>
           </p>
         </Col>

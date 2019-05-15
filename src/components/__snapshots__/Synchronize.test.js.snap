@@ -23,7 +23,7 @@ exports[`components/Synchronize enables "Continue" 1`] = `
       to="/question/1"
     >
       <ForwardRef(Bootstrap(Button))
-        bsStyle="success"
+        variant="success"
       >
         Continue
       </ForwardRef(Bootstrap(Button))>
@@ -55,8 +55,8 @@ exports[`components/Synchronize matches snapshot 1`] = `
       to="/question/1"
     >
       <ForwardRef(Bootstrap(Button))
-        bsStyle="success"
         disabled={true}
+        variant="success"
       >
         Continue
       </ForwardRef(Bootstrap(Button))>

@@ -44,39 +44,61 @@ exports[`components/Intro matches snapshot 1`] = `
   </ForwardRef(Bootstrap(Row))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))
-      lg={2}
-      lgOffset={5}
-      md={4}
-      mdOffset={4}
-      xs={6}
-      xsOffset={3}
+      lg={
+        Object {
+          "offset": 5,
+          "span": 2,
+        }
+      }
+      md={
+        Object {
+          "offset": 4,
+          "span": 4,
+        }
+      }
+      xs={
+        Object {
+          "offset": 3,
+          "span": 6,
+        }
+      }
     >
-      <div
-        className="centered"
-      >
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(InputGroup))>
-            <ForwardRef(Bootstrap(InputGroupPrepend))>
+      <p>
+        <ForwardRef(Bootstrap(InputGroup))>
+          <ForwardRef(Bootstrap(InputGroupPrepend))>
+            <ForwardRef(Bootstrap(InputGroupText))>
               #
-            </ForwardRef(Bootstrap(InputGroupPrepend))>
-            <ForwardRef(ContextTransform)
-              placeholder="team code"
-              type="text"
-              value="foo"
-            />
-          </ForwardRef(Bootstrap(InputGroup))>
-        </ForwardRef(Bootstrap(FormGroup))>
-      </div>
+            </ForwardRef(Bootstrap(InputGroupText))>
+          </ForwardRef(Bootstrap(InputGroupPrepend))>
+          <ForwardRef(ContextTransform)
+            placeholder="team code"
+            type="text"
+            value="foo"
+          />
+        </ForwardRef(Bootstrap(InputGroup))>
+      </p>
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
   <ForwardRef(Bootstrap(Row))>
     <ForwardRef(Bootstrap(Col))
-      lg={2}
-      lgOffset={5}
-      md={4}
-      mdOffset={4}
-      xs={6}
-      xsOffset={3}
+      lg={
+        Object {
+          "offset": 5,
+          "span": 2,
+        }
+      }
+      md={
+        Object {
+          "offset": 4,
+          "span": 4,
+        }
+      }
+      xs={
+        Object {
+          "offset": 3,
+          "span": 6,
+        }
+      }
     >
       <p
         className="centered"
@@ -89,7 +111,7 @@ exports[`components/Intro matches snapshot 1`] = `
           to="/question/1"
         >
           <ForwardRef(Bootstrap(Button))
-            bsStyle="success"
+            variant="success"
           >
             Let's get started!
           </ForwardRef(Bootstrap(Button))>

@@ -7,7 +7,7 @@ const StartOver = ({children, questions, startOverHandler}) => (
     <Col xs={12}>
         <p>
           <LinkContainer to="/">
-            <Button onClick={startOverHandler(questions)} bsStyle="warning">Start Over</Button>
+            <Button onClick={startOverHandler(questions)} variant="warning">Start Over</Button>
           </LinkContainer>
           {children}
         </p>

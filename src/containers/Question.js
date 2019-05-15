@@ -1,7 +1,5 @@
-import {compose} from 'redux';
 import { connect } from 'react-redux';
 import actions from '../actions';
-import {withRouter} from 'react-router-dom';
 import Question from '../components/Question';
  
 const mapStateToProps = (state) => ({

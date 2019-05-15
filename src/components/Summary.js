@@ -1,5 +1,5 @@
 import React from 'react'
-import StartOver from './StartOver'
+import StartOver from '../containers/StartOver'
 import ScoreBlock from './ScoreBlock'
 import {Col, Container, Jumbotron, Row} from 'react-bootstrap'
 

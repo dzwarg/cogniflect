@@ -114,8 +114,11 @@ export const handleConnection = wrap(function handleConnection(socket) {
 
 export const start = () => {
   io.on('connection', handleConnection);
+  
+  winston.level = 'debug';
+  winston.add(new winston.transports.Console());
 
   server.listen(port, function(){
-    console.log('listening on *:' + port);
+    log('listening on *:' + port);
   });
 };

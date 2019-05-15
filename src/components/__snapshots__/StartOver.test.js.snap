@@ -14,7 +14,7 @@ exports[`component/StartOver matches snapshot 1`] = `
         to="/"
       >
         <ForwardRef(Bootstrap(Button))
-          bsStyle="warning"
+          variant="warning"
         >
           Start Over
         </ForwardRef(Bootstrap(Button))>

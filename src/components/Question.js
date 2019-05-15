@@ -22,8 +22,8 @@ const Question = ({appState, changeHandler, history, match}) => {
         (<LinkContainer to={nextLocation}>
           {
             memberAnswers === totalMembers ?
-            <Button bsStyle="success">Next</Button> :
-            <Button bsStyle="success" disabled>Next</Button>
+            <Button variant="success">Next</Button> :
+            <Button variant="success" disabled>Next</Button>
           }
         </LinkContainer>) :
         null;
@@ -34,7 +34,9 @@ const Question = ({appState, changeHandler, history, match}) => {
     }
 
     return (
-     <li key={id}><Form.Check type="checkbox" {...checkProps}>{text}</Form.Check></li>
+      <Form.Group key={id}>
+        <Form.Check type="checkbox" {...checkProps} label={text} />
+      </Form.Group>
     );
   }
   return (
@@ -58,15 +60,15 @@ const Question = ({appState, changeHandler, history, match}) => {
             <p>
               {questionDataJS.text}
             </p>
-            <ul>
-              {questionDataJS.guesses.map(guessCheck)}
-            </ul>
+            {questionDataJS.guesses.map(guessCheck)}
           </Form>
         </Col>
       </Row>
       <Row>
         <Col xs={12}>
-          <ProgressBar now={cursor} label={`${cursor}%`} srOnly active/>
+          <p>
+            <ProgressBar now={cursor} label={`${cursor}%`} srOnly active/>
+          </p>
         </Col>
       </Row>
       <StartOver>

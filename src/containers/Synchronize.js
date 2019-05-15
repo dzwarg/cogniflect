@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import actions from '../actions';
 import Synchronize from '../components/Synchronize'
 
 const mapStateToProps = (state) => ({
