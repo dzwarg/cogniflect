@@ -1,83 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dumb component matches snapshot 1`] = `
-<Grid
-  bsClass="container"
-  componentClass="div"
-  fluid={false}
->
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
-    >
-      <Jumbotron
-        bsClass="jumbotron"
-        componentClass="div"
-      >
+exports[`components/Summary matches snapshot 1`] = `
+<ForwardRef(Bootstrap(Container))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))>
+      <ForwardRef(Bootstrap(Jumbotron))>
         <h1>
           Quiz Summary
         </h1>
         <p>
           Research has demonstrated that people perform better as teams for these types of tasks. Typical results are 15% accuracy for individuals, and 100% accuracy for groups. How did you fare?
         </p>
-      </Jumbotron>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
-      md={6}
-      xs={12}
-    >
-      <h2>
-        Individually
-      </h2>
-      <h3>
-        Score: 
-        NaN %
-      </h3>
-      <p>
-        You answered 
-         out of 
-         correctly.
-      </p>
-    </Col>
-    <Col
-      bsClass="col"
-      componentClass="div"
-      md={6}
-      xs={12}
-    >
-      <h2>
-        Collaboratively
-      </h2>
-      <h3>
-        Score: 
-        NaN %
-      </h3>
-      <p>
-        Your team answered 
-         out of 
-         correctly.
-      </p>
-    </Col>
-  </Row>
-  <Connect(StartOver) />
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
+      </ForwardRef(Bootstrap(Jumbotron))>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Row))>
+    <ScoreBlock
+      score={NaN}
+      type="Individually"
+    />
+    <ScoreBlock
+      score={NaN}
+      type="Collaboratively"
+    />
+  </ForwardRef(Bootstrap(Row))>
+  <StartOver />
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))
       xs={12}
     >
       <h2>
@@ -107,42 +56,7 @@ exports[`dumb component matches snapshot 1`] = `
            (Wikipedia)
         </li>
       </ul>
-    </Col>
-  </Row>
-</Grid>
-`;
-
-exports[`smart component matches snapshot 1`] = `
-<Summary
-  dispatch={[Function]}
-  individualCorrect={1}
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "notify": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "unsubscribe": null,
-    }
-  }
-  teamCorrect={1}
-  totalQuestions={2}
-/>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+</ForwardRef(Bootstrap(Container))>
 `;

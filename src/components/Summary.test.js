@@ -1,9 +1,6 @@
-import React from 'react';
-import {SmartComponent as Summary, DumbComponent} from './Summary';
-import { createStore } from 'redux';
-import reducers from '../reducers';
-import {fromJS} from 'immutable';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import React from 'react'
+import Summary from './Summary'
+import {fromJS} from 'immutable'
 
 const initialState = {
   appState: fromJS({
@@ -17,35 +14,12 @@ const initialState = {
       truth: true
     }]    
   })
-};
+}
 
-const store = createStore(reducers, initialState);
-  
-describe('smart component', () => {
-  var renderedComp;
-  beforeEach(() => {
-    const renderer = new ShallowRenderer();
-    renderedComp = renderer.render(
-      <Summary store={store}/>
-    );
-  });
-
+describe('components/Summary', () => {
   it('matches snapshot', () => {
-    expect(renderedComp).toMatchSnapshot()
+    const component = Summary(initialState)
+    expect(component).toMatchSnapshot();
   });
-});
-
-describe('dumb component', () => {
-  var renderedComp;
-  beforeEach(() => {
-    const renderer = new ShallowRenderer();
-    renderedComp = renderer.render(
-      <DumbComponent {...initialState}/>
-    );
-  });
-  
-  it('matches snapshot', () => {
-    expect(renderedComp).toMatchSnapshot();
-  });
-});
+})
 

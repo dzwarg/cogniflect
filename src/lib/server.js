@@ -2,18 +2,18 @@ import express from 'express';
 import http from 'http';
 import SocketIO from 'socket.io';
 
+import winston from 'winston';
+
 const app = express();
 const server = http.Server(app);
 const io = new SocketIO(server);
-const DEBUG = process.env.COGNIFLECT_DEBUG;
 
 const port = 5000;
+export const users = {};
 
-const users = {};
-
-export const log = function log() {
-  if (DEBUG) console.log.apply(console, arguments);
-}
+export const log = function log(msg) {
+  winston.log('debug', msg);
+};
 
 export const wrap = function wrap(fn, defaultReturn) {
   return function wrapped() {

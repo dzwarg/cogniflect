@@ -1,9 +1,6 @@
 import React from 'react';
-import {SmartComponent as StartOver} from './StartOver';
-import {Button, Checkbox, Col, Form, Grid, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
-import { connect } from 'react-redux';
-import actions from '../actions';
-import {withRouter} from "react-router-dom";
+import StartOver from '../containers/StartOver';
+import {Button, Col, Container, Form, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 const Question = ({appState, changeHandler, history, match}) => {
@@ -31,7 +28,7 @@ const Question = ({appState, changeHandler, history, match}) => {
         </LinkContainer>) :
         null;
   return (
-    <Grid>
+    <Container>
       <Row>
         <Col>
           <Jumbotron>
@@ -59,7 +56,7 @@ const Question = ({appState, changeHandler, history, match}) => {
                 }
     
                 return (
-                 <li key={guess.id}><Checkbox {...checkProps}>{guess.text}</Checkbox></li>
+                 <li key={guess.id}><Form.Check type="checkbox" {...checkProps}>{guess.text}</Form.Check></li>
                 );
               })}
             </ul>
@@ -74,31 +71,8 @@ const Question = ({appState, changeHandler, history, match}) => {
       <StartOver>
         {startOverChildren}
       </StartOver>
-    </Grid>
+    </Container>
   );
 };
 
-const mapStateToProps = (state) => ({
-  appState: state.appState
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeHandler: (questionData, questionId, assessmentType, answerKey, guessId, history) => (evt) => {
-    evt.preventDefault();
-    
-    dispatch(actions.set(['questions', questionId], questionData.set(answerKey, guessId)));
-
-    if (assessmentType === 'individual') {
-      const nextQuestion = questionData.get('next');
-      dispatch(actions.set(['questionCursor'], nextQuestion))
-      if (nextQuestion !== null) {
-        history.push(`/question/${nextQuestion + 1}`);
-      } else {
-        history.push('/synchronize');
-      }
-    }
-  }
-});
-
-export const DumbComponent = Question;
-export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(withRouter(Question));
+export default Question;

@@ -1,39 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`dumb component without crashing 1`] = `
-<Grid
-  bsClass="container"
-  componentClass="div"
-  fluid={false}
->
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
-    >
-      <Jumbotron
-        bsClass="jumbotron"
-        componentClass="div"
-      >
+<ForwardRef(Bootstrap(Container))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))>
+      <ForwardRef(Bootstrap(Jumbotron))>
         <h1>
           This is the Cogniflector
         </h1>
         <p>
           This application will ask you a short series of questions to you and your team.
         </p>
-      </Jumbotron>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
+      </ForwardRef(Bootstrap(Jumbotron))>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))
       xs={12}
     >
       <p>
@@ -58,15 +40,10 @@ exports[`dumb component without crashing 1`] = `
            are compared.
         </li>
       </ol>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))
       lg={2}
       lgOffset={5}
       md={4}
@@ -77,36 +54,23 @@ exports[`dumb component without crashing 1`] = `
       <div
         className="centered"
       >
-        <FormGroup
-          bsClass="form-group"
-        >
-          <InputGroup
-            bsClass="input-group"
-          >
-            <InputGroupAddon
-              bsClass="input-group-addon"
-            >
+        <ForwardRef(Bootstrap(FormGroup))>
+          <ForwardRef(Bootstrap(InputGroup))>
+            <ForwardRef(Bootstrap(InputGroupPrepend))>
               #
-            </InputGroupAddon>
-            <FormControl
-              bsClass="form-control"
-              componentClass="input"
+            </ForwardRef(Bootstrap(InputGroupPrepend))>
+            <ForwardRef(ContextTransform)
               placeholder="team code"
               type="text"
               value="foo"
             />
-          </InputGroup>
-        </FormGroup>
+          </ForwardRef(Bootstrap(InputGroup))>
+        </ForwardRef(Bootstrap(FormGroup))>
       </div>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))
       lg={2}
       lgOffset={5}
       md={4}
@@ -124,57 +88,14 @@ exports[`dumb component without crashing 1`] = `
           strict={false}
           to="/question/1"
         >
-          <Button
-            active={false}
-            block={false}
-            bsClass="btn"
+          <ForwardRef(Bootstrap(Button))
             bsStyle="success"
-            disabled={false}
           >
             Let's get started!
-          </Button>
+          </ForwardRef(Bootstrap(Button))>
         </LinkContainer>
       </p>
-    </Col>
-  </Row>
-</Grid>
-`;
-
-exports[`smart component matches snapshot 1`] = `
-<Intro
-  appState={
-    Immutable.Map {
-      "userTeamCode": "foo",
-      "teamCode": "foo",
-    }
-  }
-  handleChange={[Function]}
-  handleClick={[Function]}
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "notify": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "unsubscribe": null,
-    }
-  }
-/>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+</ForwardRef(Bootstrap(Container))>
 `;

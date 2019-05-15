@@ -1,7 +1,7 @@
 import Index from './index'
 
-describe('components/index', () => {
-  it('imports all components', () => {
+describe('containers/index', () => {
+  it('imports all containers', () => {
     expect(Index).toBeDefined()
   })
   

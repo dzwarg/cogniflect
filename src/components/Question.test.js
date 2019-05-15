@@ -1,10 +1,10 @@
 import React from 'react';
-import {SmartComponent as Question, DumbComponent} from './Question';
+import Question from './Question';
 import {Jumbotron} from 'react-bootstrap';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../reducers';
 import {fromJS} from 'immutable';
-import ShallowRenderer from 'react-test-renderer/shallow';
 
 const initialState = {
   appState: fromJS({
@@ -44,75 +44,27 @@ const initialState = {
     assessmentType: 'individual'
   })
 };
-const store = createStore(reducers, initialState);
-
-describe('smart component', () => {
-  var renderedComp;
-  beforeEach(() => {
-    const renderer = new ShallowRenderer();
-    renderedComp = renderer.render(
-      <Question store={store}/>
-    );
-  });
-
-  it('matches snapshot', () => {
-    expect(renderedComp).toMatchSnapshot()
-  });
-  
-  it('dispatches "changeHandler" for individual', (done) => {
-    const questionId = 0;
-    const questionData = initialState.appState.get('questions').get(questionId);
-    const assessmentType = initialState.appState.get('assessmentType');
-    const answerKey = (assessmentType === 'individual') ? 'myAnswer' : 'ourAnswer';
-    const mockHistory = {push:jest.fn()}
-    renderedComp.props.changeHandler(questionData, questionId, assessmentType, answerKey, 0, mockHistory)({preventDefault: done});
-  });
-
-  it('dispatches "changeHandler" for team', (done) => {
-    const questionId = 0;
-    const questionData = initialState.appState.get('questions').get(questionId);
-    const assessmentType = 'team';
-    const answerKey = (assessmentType === 'individual') ? 'myAnswer' : 'ourAnswer';
-    const mockHistory = {push:jest.fn()}
-    renderedComp.props.changeHandler(questionData, questionId, assessmentType, answerKey, 0, mockHistory)({preventDefault: done});
-  });
-
-  it('dispatches "changeHandler" with no next', (done) => {
-    const questionId = 0;
-    const questionData = initialState.appState.get('questions').get(questionId).set('next', null);
-    const assessmentType = initialState.appState.get('assessmentType');
-    const answerKey = (assessmentType === 'individual') ? 'myAnswer' : 'ourAnswer';
-    const mockHistory = {push:jest.fn()}
-    renderedComp.props.changeHandler(questionData, questionId, assessmentType, answerKey, 0, mockHistory)({preventDefault: done});
-  });
-
-});
 
 describe('dumb component', () => {
-  var renderer;
-  beforeEach(() => {
-    renderer = new ShallowRenderer();
-  });
-  
   it('renders for individual', () => {
-    const renderedComp = renderer.render(
-      <DumbComponent {...initialState}
-        changeHandler={()=>{}}
-        match={{params:{questionId: 1}}}/>
-    );
-    expect(renderedComp).toMatchSnapshot();
+    const component = Question({
+      ...initialState,
+      changeHandler: ()=>{},
+      match: {params:{questionId: 1}}
+    })
+    expect(component).toMatchSnapshot();
   });
 
   it('renders for team', () => {
     const teamState = {
       appState: initialState.appState.set('assessmentType', 'team')
     };
-    const renderedComp = renderer.render(
-      <DumbComponent {...teamState}
-        changeHandler={()=>{}}
-        match={{params:{questionId: 1}}}/>
-    );
-    expect(renderedComp).toMatchSnapshot();
+    const component = Question({
+      ...teamState,
+      changeHandler:()=>{},
+      match:{params:{questionId: 1}}
+    })
+    expect(component).toMatchSnapshot();
   });
 
   it('renders team last question', () => {
@@ -120,12 +72,12 @@ describe('dumb component', () => {
       appState: initialState.appState
         .set('assessmentType', 'team')
     };
-    const renderedComp = renderer.render(
-      <DumbComponent {...teamState}
-        changeHandler={()=>{}}
-        match={{params:{questionId: 2}}}/>
-    );
-    expect(renderedComp).toMatchSnapshot();
+    const component = Question({
+      ...teamState,
+      changeHandler: ()=>{},
+      match: {params:{questionId: 2}}
+    })
+    expect(component).toMatchSnapshot();
   });
 
   it('renders team all answered', () => {
@@ -134,11 +86,11 @@ describe('dumb component', () => {
         .set('assessmentType', 'team')
         .setIn(['team', 'members'], 1)
     };
-    const renderedComp = renderer.render(
-      <DumbComponent {...teamState}
-        changeHandler={()=>{}}
-        match={{params:{questionId: 1}}}/>
-    );
-    expect(renderedComp).toMatchSnapshot();
+    const component = Question({
+      ...teamState,
+      changeHandler: ()=>{},
+      match: {params:{questionId: 1}}
+    })
+    expect(component).toMatchSnapshot();
   });
 });

@@ -1,32 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`dumb component enables "Continue" 1`] = `
-<Grid
-  bsClass="container"
-  componentClass="div"
-  fluid={false}
->
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
-    >
-      <Jumbotron
-        bsClass="jumbotron"
-        componentClass="div"
-      >
+<ForwardRef(Bootstrap(Container))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))>
+      <ForwardRef(Bootstrap(Jumbotron))>
         <h1>
           Waiting for team
         </h1>
         <p>
           You're quick! Let's wait for the rest of your team.
         </p>
-      </Jumbotron>
-    </Col>
-  </Row>
+      </ForwardRef(Bootstrap(Jumbotron))>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
     <LinkContainer
       activeClassName="active"
@@ -35,47 +22,30 @@ exports[`dumb component enables "Continue" 1`] = `
       strict={false}
       to="/question/1"
     >
-      <Button
-        active={false}
-        block={false}
-        bsClass="btn"
+      <ForwardRef(Bootstrap(Button))
         bsStyle="success"
-        disabled={false}
       >
         Continue
-      </Button>
+      </ForwardRef(Bootstrap(Button))>
     </LinkContainer>
   </Connect(StartOver)>
-</Grid>
+</ForwardRef(Bootstrap(Container))>
 `;
 
 exports[`dumb component matches snapshot 1`] = `
-<Grid
-  bsClass="container"
-  componentClass="div"
-  fluid={false}
->
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
-    >
-      <Jumbotron
-        bsClass="jumbotron"
-        componentClass="div"
-      >
+<ForwardRef(Bootstrap(Container))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))>
+      <ForwardRef(Bootstrap(Jumbotron))>
         <h1>
           Waiting for team
         </h1>
         <p>
           You're quick! Let's wait for the rest of your team.
         </p>
-      </Jumbotron>
-    </Col>
-  </Row>
+      </ForwardRef(Bootstrap(Jumbotron))>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
     <LinkContainer
       activeClassName="active"
@@ -84,49 +54,13 @@ exports[`dumb component matches snapshot 1`] = `
       strict={false}
       to="/question/1"
     >
-      <Button
-        active={false}
-        block={false}
-        bsClass="btn"
+      <ForwardRef(Bootstrap(Button))
         bsStyle="success"
         disabled={true}
       >
         Continue
-      </Button>
+      </ForwardRef(Bootstrap(Button))>
     </LinkContainer>
   </Connect(StartOver)>
-</Grid>
-`;
-
-exports[`smart component matches snapshot 1`] = `
-<Synchronize
-  continueHandler={[Function]}
-  proceed={false}
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "notify": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "unsubscribe": null,
-    }
-  }
-/>
+</ForwardRef(Bootstrap(Container))>
 `;

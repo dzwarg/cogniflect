@@ -1,15 +1,13 @@
 import React from 'react';
-import {Button, Col, FormControl, FormGroup, Grid, InputGroup, Jumbotron, Row} from 'react-bootstrap';
+import {Button, Col, Container, FormControl, FormGroup, InputGroup, Jumbotron, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import '../styles/Intro.css';
-import { connect } from 'react-redux';
-import actions from '../actions';
 
 const Intro = ({appState, handleChange, handleClick}) => {
   const userTeamCode = appState.get('userTeamCode');
   
   return (
-    <Grid>
+    <Container>
       <Row>
         <Col>
           <Jumbotron>
@@ -37,7 +35,7 @@ const Intro = ({appState, handleChange, handleClick}) => {
           <div className="centered">
             <FormGroup>
               <InputGroup>
-                <InputGroup.Addon>#</InputGroup.Addon>
+                <InputGroup.Prepend>#</InputGroup.Prepend>
                 <FormControl type="text" placeholder="team code" onChange={handleChange} value={userTeamCode} />
               </InputGroup>
             </FormGroup>
@@ -53,24 +51,8 @@ const Intro = ({appState, handleChange, handleClick}) => {
           </p>
         </Col>
       </Row>
-    </Grid>
+    </Container>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    appState: state.appState
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  handleChange: (evt) => {
-    dispatch(actions.set(['userTeamCode'], evt.target.value));
-  },
-  handleClick: (teamCode) => (evt) => {
-    dispatch(actions.set(['teamCode'], teamCode));
-  }
-});
-
-export const DumbComponent = Intro;
-export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(Intro);
+export default Intro

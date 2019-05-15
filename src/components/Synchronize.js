@@ -1,12 +1,11 @@
 import React from 'react';
-import {SmartComponent as StartOver} from './StartOver';
-import {Button, Col, Grid, Jumbotron, Row} from 'react-bootstrap';
+import StartOver from '../containers/StartOver';
+import {Button, Col, Container, Jumbotron, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
-import { connect } from 'react-redux';
 import actions from '../actions';
 
 const Synchronize = ({continueHandler, proceed}) => (
-  <Grid>
+  <Container>
     <Row>
       <Col>
         <Jumbotron>
@@ -26,20 +25,7 @@ const Synchronize = ({continueHandler, proceed}) => (
         }
       </LinkContainer>
     </StartOver>
-  </Grid>
+  </Container>
 );
 
-const mapStateToProps = (state) => ({
-  proceed: state.appState.get('assessmentType') === 'individual' &&
-    state.appState.getIn(['team', 'members']) > 0 &&
-    state.appState.getIn(['team', 'members']) === state.appState.getIn(['team', 'synced'])
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  continueHandler: (e) => {
-    dispatch(actions.set(['assessmentType'], 'team'));
-  }
-});
-
-export const DumbComponent = Synchronize;
-export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(Synchronize);
+export default Synchronize;
