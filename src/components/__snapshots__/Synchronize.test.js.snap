@@ -14,7 +14,7 @@ exports[`components/Synchronize enables "Continue" 1`] = `
       </ForwardRef(Bootstrap(Jumbotron))>
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
-  <Connect(StartOver)>
+  <Memo(Connect(StartOver))>
     <withRouter(LinkContainer)
       to="/question/1"
     >
@@ -24,7 +24,7 @@ exports[`components/Synchronize enables "Continue" 1`] = `
         Continue
       </ForwardRef(Bootstrap(Button))>
     </withRouter(LinkContainer)>
-  </Connect(StartOver)>
+  </Memo(Connect(StartOver))>
 </ForwardRef(Bootstrap(Container))>
 `;
 
@@ -42,7 +42,7 @@ exports[`components/Synchronize matches snapshot 1`] = `
       </ForwardRef(Bootstrap(Jumbotron))>
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
-  <Connect(StartOver)>
+  <Memo(Connect(StartOver))>
     <withRouter(LinkContainer)
       to="/question/1"
     >
@@ -53,6 +53,6 @@ exports[`components/Synchronize matches snapshot 1`] = `
         Continue
       </ForwardRef(Bootstrap(Button))>
     </withRouter(LinkContainer)>
-  </Connect(StartOver)>
+  </Memo(Connect(StartOver))>
 </ForwardRef(Bootstrap(Container))>
 `;
