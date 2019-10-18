@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/ScoreBlock matches snapshot 1`] = `
+<ForwardRef(Bootstrap(Col))
+  md={6}
+  xs={12}
+>
+  <h2>
+    Quasimodally
+  </h2>
+  <h3>
+    Score: 
+    50.00 %
+  </h3>
+  <p>
+    You answered 
+    4
+     out of 
+    8
+     correctly.
+  </p>
+</ForwardRef(Bootstrap(Col))>
+`;

@@ -1,11 +1,13 @@
-import {SmartComponent as Intro} from './Intro';
-import {SmartComponent as Question} from './Question';
-import {SmartComponent as Summary} from './Summary';
-import {SmartComponent as Synchronize} from './Synchronize';
+import Intro from './Intro'
+import Question from './Question'
+import StartOver from './StartOver'
+import Summary from './Summary'
+import Synchronize from './Synchronize'
 
 export default {
   Intro,
   Question,
+  StartOver,
   Summary,
   Synchronize
-};
+}

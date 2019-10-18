@@ -1,11 +1,10 @@
-import React from 'react';
-import {SmartComponent as StartOver} from './StartOver';
-import {Col, Grid, Jumbotron, Row} from 'react-bootstrap';
-import { connect } from 'react-redux';
+import React from 'react'
+import StartOver from '../containers/StartOver'
+import ScoreBlock from './ScoreBlock'
+import {Col, Container, Jumbotron, Row} from 'react-bootstrap'
 
-const fmt = (val) => (`${(100 * val).toFixed(2)} %`);
 const Summary = ({individualCorrect, teamCorrect, totalQuestions}) => (
-  <Grid>
+  <Container>
     <Row>
       <Col>
         <Jumbotron>
@@ -17,16 +16,8 @@ const Summary = ({individualCorrect, teamCorrect, totalQuestions}) => (
       </Col>
     </Row>
     <Row>
-      <Col xs={12} md={6}>
-        <h2>Individually</h2>
-        <h3>Score: {fmt(individualCorrect/totalQuestions)}</h3>
-        <p>You answered {individualCorrect} out of {totalQuestions} correctly.</p>
-      </Col>
-      <Col xs={12} md={6}>
-        <h2>Collaboratively</h2>
-        <h3>Score: {fmt(teamCorrect/totalQuestions)}</h3>
-        <p>Your team answered {teamCorrect} out of {totalQuestions} correctly.</p>
-      </Col>
+      <ScoreBlock type={'Individually'} correct={individualCorrect} total={totalQuestions} />
+      <ScoreBlock type={'Collaboratively'} correct={teamCorrect} total={totalQuestions} />
     </Row>
     <StartOver />
     <Row>
@@ -38,18 +29,7 @@ const Summary = ({individualCorrect, teamCorrect, totalQuestions}) => (
         </ul>
       </Col>
     </Row>
-  </Grid>
-);
+  </Container>
+)
 
-const mapStateToProps = (state) => ({
-  totalQuestions: state.appState.get('questions').size,
-  individualCorrect: state.appState.get('questions').filter((val) => (
-    val.get('myAnswer') === val.get('truth')
-  )).size,
-  teamCorrect: state.appState.get('questions').filter((val) => (
-    val.get('ourAnswer') === val.get('truth')
-  )).size
-});
-
-export const DumbComponent = Summary;
-export const SmartComponent = connect(mapStateToProps)(Summary);
+export default Summary
