@@ -165,11 +165,7 @@ exports[`components/Question matches snapshot for team 1`] = `
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
-    <LinkContainer
-      activeClassName="active"
-      exact={false}
-      replace={false}
-      strict={false}
+    <withRouter(LinkContainer)
       to="/question/2"
     >
       <ForwardRef(Bootstrap(Button))
@@ -177,7 +173,7 @@ exports[`components/Question matches snapshot for team 1`] = `
       >
         Next
       </ForwardRef(Bootstrap(Button))>
-    </LinkContainer>
+    </withRouter(LinkContainer)>
   </Connect(StartOver)>
 </ForwardRef(Bootstrap(Container))>
 `;
@@ -266,11 +262,7 @@ exports[`components/Question matches snapshot for team all answered 1`] = `
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
-    <LinkContainer
-      activeClassName="active"
-      exact={false}
-      replace={false}
-      strict={false}
+    <withRouter(LinkContainer)
       to="/question/2"
     >
       <ForwardRef(Bootstrap(Button))
@@ -279,7 +271,7 @@ exports[`components/Question matches snapshot for team all answered 1`] = `
       >
         Next
       </ForwardRef(Bootstrap(Button))>
-    </LinkContainer>
+    </withRouter(LinkContainer)>
   </Connect(StartOver)>
 </ForwardRef(Bootstrap(Container))>
 `;
@@ -368,11 +360,7 @@ exports[`components/Question matches snapshot for team last question 1`] = `
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
-    <LinkContainer
-      activeClassName="active"
-      exact={false}
-      replace={false}
-      strict={false}
+    <withRouter(LinkContainer)
       to="/summary"
     >
       <ForwardRef(Bootstrap(Button))
@@ -380,7 +368,7 @@ exports[`components/Question matches snapshot for team last question 1`] = `
       >
         Next
       </ForwardRef(Bootstrap(Button))>
-    </LinkContainer>
+    </withRouter(LinkContainer)>
   </Connect(StartOver)>
 </ForwardRef(Bootstrap(Container))>
 `;

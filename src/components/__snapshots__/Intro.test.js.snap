@@ -123,11 +123,7 @@ exports[`components/Intro matches snapshot 1`] = `
   <HalfRow
     className="centered"
   >
-    <LinkContainer
-      activeClassName="active"
-      exact={false}
-      replace={false}
-      strict={false}
+    <withRouter(LinkContainer)
       to="/question/1"
     >
       <ForwardRef(Bootstrap(Button))
@@ -135,7 +131,7 @@ exports[`components/Intro matches snapshot 1`] = `
       >
         Let's get started!
       </ForwardRef(Bootstrap(Button))>
-    </LinkContainer>
+    </withRouter(LinkContainer)>
   </HalfRow>
 </ForwardRef(Bootstrap(Container))>
 `;

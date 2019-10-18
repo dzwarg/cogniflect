@@ -6,11 +6,7 @@ exports[`component/StartOver matches snapshot 1`] = `
     xs={12}
   >
     <p>
-      <LinkContainer
-        activeClassName="active"
-        exact={false}
-        replace={false}
-        strict={false}
+      <withRouter(LinkContainer)
         to="/"
       >
         <ForwardRef(Bootstrap(Button))
@@ -18,7 +14,7 @@ exports[`component/StartOver matches snapshot 1`] = `
         >
           Start Over
         </ForwardRef(Bootstrap(Button))>
-      </LinkContainer>
+      </withRouter(LinkContainer)>
     </p>
   </ForwardRef(Bootstrap(Col))>
 </ForwardRef(Bootstrap(Row))>

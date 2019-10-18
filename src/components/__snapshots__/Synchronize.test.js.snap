@@ -15,11 +15,7 @@ exports[`components/Synchronize enables "Continue" 1`] = `
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
-    <LinkContainer
-      activeClassName="active"
-      exact={false}
-      replace={false}
-      strict={false}
+    <withRouter(LinkContainer)
       to="/question/1"
     >
       <ForwardRef(Bootstrap(Button))
@@ -27,7 +23,7 @@ exports[`components/Synchronize enables "Continue" 1`] = `
       >
         Continue
       </ForwardRef(Bootstrap(Button))>
-    </LinkContainer>
+    </withRouter(LinkContainer)>
   </Connect(StartOver)>
 </ForwardRef(Bootstrap(Container))>
 `;
@@ -47,11 +43,7 @@ exports[`components/Synchronize matches snapshot 1`] = `
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
   <Connect(StartOver)>
-    <LinkContainer
-      activeClassName="active"
-      exact={false}
-      replace={false}
-      strict={false}
+    <withRouter(LinkContainer)
       to="/question/1"
     >
       <ForwardRef(Bootstrap(Button))
@@ -60,7 +52,7 @@ exports[`components/Synchronize matches snapshot 1`] = `
       >
         Continue
       </ForwardRef(Bootstrap(Button))>
-    </LinkContainer>
+    </withRouter(LinkContainer)>
   </Connect(StartOver)>
 </ForwardRef(Bootstrap(Container))>
 `;
