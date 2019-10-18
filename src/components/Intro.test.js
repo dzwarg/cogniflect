@@ -1,5 +1,5 @@
 import React from 'react';
-import Intro from './Intro';
+import Intro, {HalfRow} from './Intro';
 import {Button, FormControl} from 'react-bootstrap';
 import reducers from '../reducers';
 import {Map} from 'immutable';
@@ -12,3 +12,15 @@ describe('components/Intro', () => {
     expect(component).toMatchSnapshot();
   });
 });
+
+describe('components/HalfRow', () => {
+  it('matches snapshot without className', () => {
+    const component = HalfRow({children:(<p>Hello, world.</p>)})
+    expect(component).toMatchSnapshot();
+  })
+
+  it('matches snapshot with className', () => {
+    const component = HalfRow({className:'mister-rogers', children:(<p>Hello, world.</p>)})
+    expect(component).toMatchSnapshot();
+  })
+})

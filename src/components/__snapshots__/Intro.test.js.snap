@@ -1,5 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`components/HalfRow matches snapshot with className 1`] = `
+<ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Col))
+    lg={
+      Object {
+        "offset": 5,
+        "span": 2,
+      }
+    }
+    md={
+      Object {
+        "offset": 4,
+        "span": 4,
+      }
+    }
+    xs={
+      Object {
+        "offset": 3,
+        "span": 6,
+      }
+    }
+  >
+    <p
+      className="mister-rogers"
+    >
+      <p>
+        Hello, world.
+      </p>
+    </p>
+  </ForwardRef(Bootstrap(Col))>
+</ForwardRef(Bootstrap(Row))>
+`;
+
+exports[`components/HalfRow matches snapshot without className 1`] = `
+<ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Col))
+    lg={
+      Object {
+        "offset": 5,
+        "span": 2,
+      }
+    }
+    md={
+      Object {
+        "offset": 4,
+        "span": 4,
+      }
+    }
+    xs={
+      Object {
+        "offset": 3,
+        "span": 6,
+      }
+    }
+  >
+    <p>
+      <p>
+        Hello, world.
+      </p>
+    </p>
+  </ForwardRef(Bootstrap(Col))>
+</ForwardRef(Bootstrap(Row))>
+`;
+
 exports[`components/Intro matches snapshot 1`] = `
 <ForwardRef(Bootstrap(Container))>
   <ForwardRef(Bootstrap(Row))>
@@ -42,82 +106,36 @@ exports[`components/Intro matches snapshot 1`] = `
       </ol>
     </ForwardRef(Bootstrap(Col))>
   </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
-      lg={
-        Object {
-          "offset": 5,
-          "span": 2,
-        }
-      }
-      md={
-        Object {
-          "offset": 4,
-          "span": 4,
-        }
-      }
-      xs={
-        Object {
-          "offset": 3,
-          "span": 6,
-        }
-      }
+  <HalfRow>
+    <ForwardRef(Bootstrap(InputGroup))>
+      <ForwardRef(Bootstrap(InputGroupPrepend))>
+        <ForwardRef(Bootstrap(InputGroupText))>
+          #
+        </ForwardRef(Bootstrap(InputGroupText))>
+      </ForwardRef(Bootstrap(InputGroupPrepend))>
+      <ForwardRef(ContextTransform)
+        placeholder="team code"
+        type="text"
+        value="foo"
+      />
+    </ForwardRef(Bootstrap(InputGroup))>
+  </HalfRow>
+  <HalfRow
+    className="centered"
+  >
+    <LinkContainer
+      activeClassName="active"
+      exact={false}
+      replace={false}
+      strict={false}
+      to="/question/1"
     >
-      <p>
-        <ForwardRef(Bootstrap(InputGroup))>
-          <ForwardRef(Bootstrap(InputGroupPrepend))>
-            <ForwardRef(Bootstrap(InputGroupText))>
-              #
-            </ForwardRef(Bootstrap(InputGroupText))>
-          </ForwardRef(Bootstrap(InputGroupPrepend))>
-          <ForwardRef(ContextTransform)
-            placeholder="team code"
-            type="text"
-            value="foo"
-          />
-        </ForwardRef(Bootstrap(InputGroup))>
-      </p>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
-      lg={
-        Object {
-          "offset": 5,
-          "span": 2,
-        }
-      }
-      md={
-        Object {
-          "offset": 4,
-          "span": 4,
-        }
-      }
-      xs={
-        Object {
-          "offset": 3,
-          "span": 6,
-        }
-      }
-    >
-      <p
-        className="centered"
+      <ForwardRef(Bootstrap(Button))
+        variant="success"
       >
-        <LinkContainer
-          activeClassName="active"
-          exact={false}
-          replace={false}
-          strict={false}
-          to="/question/1"
-        >
-          <ForwardRef(Bootstrap(Button))
-            variant="success"
-          >
-            Let's get started!
-          </ForwardRef(Bootstrap(Button))>
-        </LinkContainer>
-      </p>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
+        Let's get started!
+      </ForwardRef(Bootstrap(Button))>
+    </LinkContainer>
+  </HalfRow>
 </ForwardRef(Bootstrap(Container))>
 `;
