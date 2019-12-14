@@ -44,20 +44,7 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - run
-                - --rm
-                - --name
-                - node-test
-                - --volume
-                - node_modules:/app/node_modules
-                - --volume
-                - /volume1/docker/godata/pipelines/Cogniflect:/app
-                - --entrypoint
-                - /usr/local/bin/yarn
-                - --workdir
-                - /app
-                - node:10
-                - run
-                - test
+                - -c
+                - docker run --rm --name node-test --volume node_modules:/app/node_modules --volume /volume1/docker/godata/pipelines/Cogniflect:/app --entrypoint /usr/local/bin/yarn --workdir /app -e CI=$CI node:10 run test
                 command: docker
                 run_if: passed
