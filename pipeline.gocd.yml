@@ -1,7 +1,5 @@
 format_version: 3
 pipelines:
-  environment_variables:
-    CI: true
   Cogniflect:
     group: defaultGroup
     label_template: ${COUNT}
@@ -13,6 +11,8 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: gocd
+    environment_variables:
+      CI: true
     stages:
     - Build:
         fetch_materials: true
