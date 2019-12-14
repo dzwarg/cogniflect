@@ -5,6 +5,12 @@ pipelines:
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
+    materials:
+      git:
+        git: https://github.com/dzwarg/cogniflect.git
+        shallow_clone: false
+        auto_update: true
+        branch: gocd
     stages:
     - Build:
         fetch_materials: true
