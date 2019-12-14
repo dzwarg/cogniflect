@@ -24,14 +24,6 @@ pipelines:
             timeout: 0
             tasks:
             - exec:
-                command: pwd
-                run_if: passed
-            - exec:
-                arguments:
-                - -la
-                command: ls
-                run_if: passed
-            - exec:
                 arguments:
                 - run
                 - --rm
@@ -46,5 +38,35 @@ pipelines:
                 - --workdir
                 - /app
                 - node:10
+                command: docker
+                run_if: passed
+    - Test:
+        fetch_materials: false
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          Unit:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - run
+                - --rm
+                - --name
+                - node-test
+                - --volume
+                - node_modules:/app/node_modules
+                - --volume
+                - /volume1/docker/godata/pipelines/Cogniflect:/app
+                - --entrypoint
+                - /usr/local/bin/yarn
+                - --workdir
+                - /app
+                - node:10
+                - run
+                - test
                 command: docker
                 run_if: passed
