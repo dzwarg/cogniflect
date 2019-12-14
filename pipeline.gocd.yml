@@ -27,20 +27,9 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - run
-                - --rm
-                - --name
-                - node-builder
-                - --volume
-                - node_modules:/app/node_modules
-                - --volume
-                - /volume1/docker/godata/pipelines/Cogniflect:/app
-                - --entrypoint
-                - /usr/local/bin/yarn
-                - --workdir
-                - /app
-                - node:10
-                command: docker
+                - -c
+                - docker run --rm --name node-builder --volume node_modules:/app/node_modules --volume /volume1/docker/godata/pipelines/Cogniflect:/app --entrypoint /usr/local/bin/yarn --workdir /app -e CI=$CI node:10
+                command: sh
                 run_if: passed
     - Test:
         fetch_materials: false
