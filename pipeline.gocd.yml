@@ -57,3 +57,12 @@ pipelines:
                 - docker run --rm --name node-coverage --volume node_modules:/app/node_modules --volume /volume1/docker/godata/pipelines/Cogniflect:/app --entrypoint /usr/local/bin/yarn --workdir /app -e CI=$CI node:10 run coverage
                 command: sh
                 run_if: passed
+          Updates:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -c
+                - docker run --rm --name node-updates --volume node_modules:/app/node_modules --volume /volume1/docker/godata/pipelines/Cogniflect:/app --entrypoint /usr/local/bin/yarn --workdir /app -e CI=$CI node:10 run check-updates
+                command: sh
+                run_if: passed
