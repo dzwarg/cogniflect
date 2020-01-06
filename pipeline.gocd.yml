@@ -11,11 +11,13 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: gocd
+        destination: cogniflect
       cicd_helpers:
         git: https://github.com/dzwarg/cicd-helpers.git
         shallow_clone: false
         auto_update: true
         branch: master
+        destination: utils
     environment_variables:
       CI: true
     stages:
@@ -33,7 +35,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - . ./cicd_helpers/gocd-helpers.sh
+                - . ./utils/gocd-helpers.sh
                 - agent_mount
                 command: sh
           Compile:
