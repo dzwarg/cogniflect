@@ -35,8 +35,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - . ./utils/gocd-helpers.sh
-                - agent_mount
+                - ls -l
                 command: sh
           Compile:
             timeout: 0
