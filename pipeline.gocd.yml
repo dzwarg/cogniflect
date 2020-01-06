@@ -35,8 +35,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - . ./utils/gocd-utils.sh
-                - agent_mount
+                - . ./utils/gocd-utils.sh; agent_mount
                 command: sh
           Compile:
             timeout: 0
@@ -44,8 +43,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - . ./utils/gocd-utils.sh
-                - docker run --rm --name node-builder --volume node_modules:/app/node_modules --volume `agent_mount`/pipelines/Cogniflect/cogniflect:/app --entrypoint /usr/local/bin/yarn --workdir /app -e CI=$CI node:10
+                - . ./utils/gocd-utils.sh; docker run --rm --name node-builder --volume node_modules:/app/node_modules --volume `agent_mount`/pipelines/Cogniflect/cogniflect:/app --entrypoint /usr/local/bin/yarn --workdir /app -e CI=$CI node:10
                 command: sh
                 run_if: passed
     - Test:
