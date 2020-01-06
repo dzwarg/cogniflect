@@ -6,11 +6,16 @@ pipelines:
     lock_behavior: none
     display_order: -1
     materials:
-      git:
+      cogniflect_source:
         git: https://github.com/dzwarg/cogniflect.git
         shallow_clone: false
         auto_update: true
         branch: gocd
+      cicd_helpers:
+        git: https://github.com/dzwarg/cicd-helpers.git
+        shallow_clone: false
+        auto_update: true
+        branch: master
     environment_variables:
       CI: true
     stages:
@@ -28,7 +33,8 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - docker exec docker-agent1 /bin/hostname | xargs docker inspect --format='{{range .Mounts}}{{if eq .Destination "/godata" }}{{.Source}}{{end}}{{end}}'
+                - . ./cicd_helpers/gocd-helpers.sh
+                - agent_mount
                 command: sh
           Compile:
             timeout: 0
