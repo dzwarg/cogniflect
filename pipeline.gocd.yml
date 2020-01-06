@@ -28,7 +28,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - pwd
+                - docker exec docker-agent1 /bin/hostname | xargs docker inspect --format='{{range .Mounts}}{{if eq .Destination "/godata" }}{{.Source}}{{end}}{{end}}'
                 command: sh
           Compile:
             timeout: 0
