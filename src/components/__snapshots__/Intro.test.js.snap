@@ -1,39 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dumb component without crashing 1`] = `
-<Grid
-  bsClass="container"
-  componentClass="div"
-  fluid={false}
->
-  <Row
-    bsClass="row"
-    componentClass="div"
+exports[`components/HalfRow matches snapshot with className 1`] = `
+<ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Col))
+    lg={
+      Object {
+        "offset": 5,
+        "span": 2,
+      }
+    }
+    md={
+      Object {
+        "offset": 4,
+        "span": 4,
+      }
+    }
+    xs={
+      Object {
+        "offset": 3,
+        "span": 6,
+      }
+    }
   >
-    <Col
-      bsClass="col"
-      componentClass="div"
+    <p
+      className="mister-rogers"
     >
-      <Jumbotron
-        bsClass="jumbotron"
-        componentClass="div"
-      >
+      <p>
+        Hello, world.
+      </p>
+    </p>
+  </ForwardRef(Bootstrap(Col))>
+</ForwardRef(Bootstrap(Row))>
+`;
+
+exports[`components/HalfRow matches snapshot without className 1`] = `
+<ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Col))
+    lg={
+      Object {
+        "offset": 5,
+        "span": 2,
+      }
+    }
+    md={
+      Object {
+        "offset": 4,
+        "span": 4,
+      }
+    }
+    xs={
+      Object {
+        "offset": 3,
+        "span": 6,
+      }
+    }
+  >
+    <p>
+      <p>
+        Hello, world.
+      </p>
+    </p>
+  </ForwardRef(Bootstrap(Col))>
+</ForwardRef(Bootstrap(Row))>
+`;
+
+exports[`components/Intro matches snapshot 1`] = `
+<ForwardRef(Bootstrap(Container))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))>
+      <ForwardRef(Bootstrap(Jumbotron))>
         <h1>
           This is the Cogniflector
         </h1>
         <p>
           This application will ask you a short series of questions to you and your team.
         </p>
-      </Jumbotron>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
+      </ForwardRef(Bootstrap(Jumbotron))>
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+  <ForwardRef(Bootstrap(Row))>
+    <ForwardRef(Bootstrap(Col))
       xs={12}
     >
       <p>
@@ -58,123 +104,34 @@ exports[`dumb component without crashing 1`] = `
            are compared.
         </li>
       </ol>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
+    </ForwardRef(Bootstrap(Col))>
+  </ForwardRef(Bootstrap(Row))>
+  <HalfRow>
+    <ForwardRef(Bootstrap(InputGroup))>
+      <ForwardRef(Bootstrap(InputGroupPrepend))>
+        <ForwardRef(Bootstrap(InputGroupText))>
+          #
+        </ForwardRef(Bootstrap(InputGroupText))>
+      </ForwardRef(Bootstrap(InputGroupPrepend))>
+      <ForwardRef(ContextTransform)
+        placeholder="team code"
+        type="text"
+        value="foo"
+      />
+    </ForwardRef(Bootstrap(InputGroup))>
+  </HalfRow>
+  <HalfRow
+    className="centered"
   >
-    <Col
-      bsClass="col"
-      componentClass="div"
-      lg={2}
-      lgOffset={5}
-      md={4}
-      mdOffset={4}
-      xs={6}
-      xsOffset={3}
+    <withRouter(LinkContainer)
+      to="/question/1"
     >
-      <div
-        className="centered"
+      <ForwardRef(Bootstrap(Button))
+        variant="success"
       >
-        <FormGroup
-          bsClass="form-group"
-        >
-          <InputGroup
-            bsClass="input-group"
-          >
-            <InputGroupAddon
-              bsClass="input-group-addon"
-            >
-              #
-            </InputGroupAddon>
-            <FormControl
-              bsClass="form-control"
-              componentClass="input"
-              placeholder="team code"
-              type="text"
-              value="foo"
-            />
-          </InputGroup>
-        </FormGroup>
-      </div>
-    </Col>
-  </Row>
-  <Row
-    bsClass="row"
-    componentClass="div"
-  >
-    <Col
-      bsClass="col"
-      componentClass="div"
-      lg={2}
-      lgOffset={5}
-      md={4}
-      mdOffset={4}
-      xs={6}
-      xsOffset={3}
-    >
-      <p
-        className="centered"
-      >
-        <LinkContainer
-          activeClassName="active"
-          exact={false}
-          replace={false}
-          strict={false}
-          to="/question/1"
-        >
-          <Button
-            active={false}
-            block={false}
-            bsClass="btn"
-            bsStyle="success"
-            disabled={false}
-          >
-            Let's get started!
-          </Button>
-        </LinkContainer>
-      </p>
-    </Col>
-  </Row>
-</Grid>
-`;
-
-exports[`smart component matches snapshot 1`] = `
-<Intro
-  appState={
-    Immutable.Map {
-      "userTeamCode": "foo",
-      "teamCode": "foo",
-    }
-  }
-  handleChange={[Function]}
-  handleClick={[Function]}
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "notify": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "unsubscribe": null,
-    }
-  }
-/>
+        Let's get started!
+      </ForwardRef(Bootstrap(Button))>
+    </withRouter(LinkContainer)>
+  </HalfRow>
+</ForwardRef(Bootstrap(Container))>
 `;

@@ -1,15 +1,23 @@
 import React from 'react';
-import {Button, Col, FormControl, FormGroup, Grid, InputGroup, Jumbotron, Row} from 'react-bootstrap';
+import {Button, Col, Container, FormControl, InputGroup, Jumbotron, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import '../styles/Intro.css';
-import { connect } from 'react-redux';
-import actions from '../actions';
+
+const HalfRow = ({className, children}) => {
+  return (<Row>
+    <Col xs={{span:6,offset:3}} md={{span:4,offset:4}} lg={{span:2,offset:5}}>
+      <p className={className}>
+        {children}
+      </p>
+    </Col>
+  </Row>)
+}
 
 const Intro = ({appState, handleChange, handleClick}) => {
   const userTeamCode = appState.get('userTeamCode');
   
   return (
-    <Grid>
+    <Container>
       <Row>
         <Col>
           <Jumbotron>
@@ -32,45 +40,22 @@ const Intro = ({appState, handleChange, handleClick}) => {
           </ol>
         </Col>
       </Row>
-      <Row>
-        <Col xs={6} xsOffset={3} md={4} mdOffset={4} lg={2} lgOffset={5}>
-          <div className="centered">
-            <FormGroup>
-              <InputGroup>
-                <InputGroup.Addon>#</InputGroup.Addon>
-                <FormControl type="text" placeholder="team code" onChange={handleChange} value={userTeamCode} />
-              </InputGroup>
-            </FormGroup>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={6} xsOffset={3} md={4} mdOffset={4} lg={2} lgOffset={5}>
-          <p className="centered">
-            <LinkContainer to="/question/1">
-              <Button onClick={handleClick(userTeamCode)} bsStyle="success">Let&apos;s get started!</Button>
-            </LinkContainer>
-          </p>
-        </Col>
-      </Row>
-    </Grid>
+      <HalfRow>
+        <InputGroup>
+          <InputGroup.Prepend>
+            <InputGroup.Text>#</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl type="text" placeholder="team code" onChange={handleChange} value={userTeamCode} />
+        </InputGroup>
+      </HalfRow>
+      <HalfRow className="centered">
+        <LinkContainer to="/question/1">
+          <Button onClick={handleClick(userTeamCode)} variant="success">Let&apos;s get started!</Button>
+        </LinkContainer>
+      </HalfRow>
+    </Container>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    appState: state.appState
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  handleChange: (evt) => {
-    dispatch(actions.set(['userTeamCode'], evt.target.value));
-  },
-  handleClick: (teamCode) => (evt) => {
-    dispatch(actions.set(['teamCode'], teamCode));
-  }
-});
-
-export const DumbComponent = Intro;
-export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(Intro);
+export default Intro
+export {HalfRow}

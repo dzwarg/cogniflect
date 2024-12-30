@@ -1,9 +1,6 @@
 import React from 'react';
-import {SmartComponent as StartOver} from './StartOver';
-import {Button, Checkbox, Col, Form, Grid, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
-import { connect } from 'react-redux';
-import actions from '../actions';
-import {withRouter} from "react-router-dom";
+import StartOver from '../containers/StartOver';
+import {Button, Col, Container, Form, Jumbotron, ProgressBar, Row} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 const Question = ({appState, changeHandler, history, match}) => {
@@ -25,13 +22,25 @@ const Question = ({appState, changeHandler, history, match}) => {
         (<LinkContainer to={nextLocation}>
           {
             memberAnswers === totalMembers ?
-            <Button bsStyle="success">Next</Button> :
-            <Button bsStyle="success" disabled>Next</Button>
+            <Button variant="success">Next</Button> :
+            <Button variant="success" disabled>Next</Button>
           }
         </LinkContainer>) :
         null;
+  const guessCheck = ({id, text}) => {
+    const checkProps = {
+      onChange: changeHandler(questionData, questionId, assessmentType, answerKey, id, history),
+      checked: (id === questionDataJS[answerKey])
+    }
+
+    return (
+      <Form.Group key={id}>
+        <Form.Check type="checkbox" {...checkProps} label={text} />
+      </Form.Group>
+    );
+  }
   return (
-    <Grid>
+    <Container>
       <Row>
         <Col>
           <Jumbotron>
@@ -51,54 +60,22 @@ const Question = ({appState, changeHandler, history, match}) => {
             <p>
               {questionDataJS.text}
             </p>
-            <ul>
-              {questionDataJS.guesses.map((guess) => {
-                const checkProps = {
-                  onChange: changeHandler(questionData, questionId, assessmentType, answerKey, guess.id, history),
-                  checked: (guess.id === questionDataJS[answerKey])
-                }
-    
-                return (
-                 <li key={guess.id}><Checkbox {...checkProps}>{guess.text}</Checkbox></li>
-                );
-              })}
-            </ul>
+            {questionDataJS.guesses.map(guessCheck)}
           </Form>
         </Col>
       </Row>
       <Row>
         <Col xs={12}>
-          <ProgressBar now={cursor} label={`${cursor}%`} srOnly active/>
+          <p>
+            <ProgressBar now={cursor} label={`${cursor}%`} srOnly active/>
+          </p>
         </Col>
       </Row>
       <StartOver>
         {startOverChildren}
       </StartOver>
-    </Grid>
+    </Container>
   );
 };
 
-const mapStateToProps = (state) => ({
-  appState: state.appState
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeHandler: (questionData, questionId, assessmentType, answerKey, guessId, history) => (evt) => {
-    evt.preventDefault();
-    
-    dispatch(actions.set(['questions', questionId], questionData.set(answerKey, guessId)));
-
-    if (assessmentType === 'individual') {
-      const nextQuestion = questionData.get('next');
-      dispatch(actions.set(['questionCursor'], nextQuestion))
-      if (nextQuestion !== null) {
-        history.push(`/question/${nextQuestion + 1}`);
-      } else {
-        history.push('/synchronize');
-      }
-    }
-  }
-});
-
-export const DumbComponent = Question;
-export const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(withRouter(Question));
+export default Question;
