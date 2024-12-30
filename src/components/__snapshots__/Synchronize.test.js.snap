@@ -1,58 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/Synchronize enables "Continue" 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1>
           Waiting for team
         </h1>
         <p>
           You're quick! Let's wait for the rest of your team.
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver))>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <UNDEFINED>
     <withRouter(LinkContainer)
       to="/question/1"
     >
-      <ForwardRef(Bootstrap(Button))
+      <ForwardRef
+        active={false}
+        disabled={false}
         variant="success"
       >
         Continue
-      </ForwardRef(Bootstrap(Button))>
+      </ForwardRef>
     </withRouter(LinkContainer)>
-  </Memo(Connect(StartOver))>
-</ForwardRef(Bootstrap(Container))>
+  </UNDEFINED>
+</ForwardRef>
 `;
 
 exports[`components/Synchronize matches snapshot 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1>
           Waiting for team
         </h1>
         <p>
           You're quick! Let's wait for the rest of your team.
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver))>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <UNDEFINED>
     <withRouter(LinkContainer)
       to="/question/1"
     >
-      <ForwardRef(Bootstrap(Button))
+      <ForwardRef
+        active={false}
         disabled={true}
         variant="success"
       >
         Continue
-      </ForwardRef(Bootstrap(Button))>
+      </ForwardRef>
     </withRouter(LinkContainer)>
-  </Memo(Connect(StartOver))>
-</ForwardRef(Bootstrap(Container))>
+  </UNDEFINED>
+</ForwardRef>
 `;

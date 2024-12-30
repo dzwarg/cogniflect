@@ -8,7 +8,7 @@
     "merge": ">=1.2.1",
     "nodemon": "^1.19.4",
     "react": "^16.10.2",
-    "react-bootstrap": "^1.0.0-beta.5",
+    "react-bootstrap": "1.6.8",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
     "react-router": "^5.1.2",
@@ -33,16 +33,16 @@
   "scripts": {
     "build": "concurrently \"npm:build-*\"",
     "build-socketserver": "babel src/lib -d dist -s --ignore \"src/**/*.test.js\"",
-    "build-webapp": "react-scripts build",
+    "build-webapp": "react-scripts --openssl-legacy-provider build",
     "check-updates": "ncu",
     "coverage": "react-scripts test --env=jsdom --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "start": "concurrently \"npm:start-*\"",
     "start-socketserver": "nodemon -w dist/server.js dist/index.js",
-    "start-webapp": "react-scripts start",
+    "start-webapp": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test --env=jsdom"
   },
-  "proxy": "http://localhost:5000/",
+  "proxy": "https://5000-dzwarg-cogniflect-hcelqt33bu.app.codeanywhere.com/",
   "husky": {
     "hooks": {
       "pre-commit": "npm run coverage"

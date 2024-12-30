@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component/StartOver matches snapshot 1`] = `
-<ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Col))
+<ForwardRef
+  noGutters={false}
+>
+  <ForwardRef
     xs={12}
   >
     <p>
       <withRouter(LinkContainer)
         to="/"
       >
-        <ForwardRef(Bootstrap(Button))
+        <ForwardRef
+          active={false}
+          disabled={false}
           variant="warning"
         >
           Start Over
-        </ForwardRef(Bootstrap(Button))>
+        </ForwardRef>
       </withRouter(LinkContainer)>
     </p>
-  </ForwardRef(Bootstrap(Col))>
-</ForwardRef(Bootstrap(Row))>
+  </ForwardRef>
+</ForwardRef>
 `;

@@ -1,20 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/Summary matches snapshot 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1>
           Quiz Summary
         </h1>
         <p>
           Research has demonstrated that people perform better as teams for these types of tasks. Typical results are 15% accuracy for individuals, and 100% accuracy for groups. How did you fare?
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
     <ScoreBlock
       correct={2}
       total={6}
@@ -25,10 +33,12 @@ exports[`components/Summary matches snapshot 1`] = `
       total={6}
       type="Collaboratively"
     />
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver)) />
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+  </ForwardRef>
+  <UNDEFINED />
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <h2>
@@ -58,7 +68,7 @@ exports[`components/Summary matches snapshot 1`] = `
            (Wikipedia)
         </li>
       </ul>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-</ForwardRef(Bootstrap(Container))>
+    </ForwardRef>
+  </ForwardRef>
+</ForwardRef>
 `;

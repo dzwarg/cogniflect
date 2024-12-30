@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/HalfRow matches snapshot with className 1`] = `
-<ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Col))
+<ForwardRef
+  noGutters={false}
+>
+  <ForwardRef
     lg={
       Object {
         "offset": 5,
@@ -29,13 +31,15 @@ exports[`components/HalfRow matches snapshot with className 1`] = `
         Hello, world.
       </p>
     </p>
-  </ForwardRef(Bootstrap(Col))>
-</ForwardRef(Bootstrap(Row))>
+  </ForwardRef>
+</ForwardRef>
 `;
 
 exports[`components/HalfRow matches snapshot without className 1`] = `
-<ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Col))
+<ForwardRef
+  noGutters={false}
+>
+  <ForwardRef
     lg={
       Object {
         "offset": 5,
@@ -60,26 +64,34 @@ exports[`components/HalfRow matches snapshot without className 1`] = `
         Hello, world.
       </p>
     </p>
-  </ForwardRef(Bootstrap(Col))>
-</ForwardRef(Bootstrap(Row))>
+  </ForwardRef>
+</ForwardRef>
 `;
 
 exports[`components/Intro matches snapshot 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1>
           This is the Cogniflector
         </h1>
         <p>
           This application will ask you a short series of questions to you and your team.
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <p>
@@ -104,21 +116,21 @@ exports[`components/Intro matches snapshot 1`] = `
            are compared.
         </li>
       </ol>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
+    </ForwardRef>
+  </ForwardRef>
   <HalfRow>
-    <ForwardRef(Bootstrap(InputGroup))>
-      <ForwardRef(Bootstrap(InputGroupPrepend))>
-        <ForwardRef(Bootstrap(InputGroupText))>
+    <ForwardRef>
+      <ForwardRef>
+        <ForwardRef>
           #
-        </ForwardRef(Bootstrap(InputGroupText))>
-      </ForwardRef(Bootstrap(InputGroupPrepend))>
-      <ForwardRef(ContextTransform)
+        </ForwardRef>
+      </ForwardRef>
+      <ForwardRef
         placeholder="team code"
         type="text"
         value="foo"
       />
-    </ForwardRef(Bootstrap(InputGroup))>
+    </ForwardRef>
   </HalfRow>
   <HalfRow
     className="centered"
@@ -126,12 +138,14 @@ exports[`components/Intro matches snapshot 1`] = `
     <withRouter(LinkContainer)
       to="/question/1"
     >
-      <ForwardRef(Bootstrap(Button))
+      <ForwardRef
+        active={false}
+        disabled={false}
         variant="success"
       >
         Let's get started!
-      </ForwardRef(Bootstrap(Button))>
+      </ForwardRef>
     </withRouter(LinkContainer)>
   </HalfRow>
-</ForwardRef(Bootstrap(Container))>
+</ForwardRef>
 `;

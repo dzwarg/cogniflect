@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/ScoreBlock matches snapshot 1`] = `
-<ForwardRef(Bootstrap(Col))
+<ForwardRef
   md={6}
   xs={12}
 >
@@ -19,5 +19,5 @@ exports[`components/ScoreBlock matches snapshot 1`] = `
     8
      correctly.
   </p>
-</ForwardRef(Bootstrap(Col))>
+</ForwardRef>
 `;

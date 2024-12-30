@@ -1,91 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/Question matches snapshot for individual 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1
           className="capitalized"
         >
           individual
            assessment
         </h1>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <h2>
         Question #
         1
       </h2>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
-      <ForwardRef(Bootstrap(Form))>
+      <ForwardRef
+        inline={false}
+      >
         <p>
           In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half of the lake?
         </p>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="24"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="47"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="96"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="49"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-      </ForwardRef(Bootstrap(Form))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+        </ForwardRef>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <p>
-        <ForwardRef(Bootstrap(ProgressBar))
+        <ForwardRef
           active={true}
+          animated={false}
+          isChild={false}
           label="0%"
+          max={100}
+          min={0}
           now={0}
           srOnly={true}
+          striped={false}
         />
       </p>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver)) />
-</ForwardRef(Bootstrap(Container))>
+    </ForwardRef>
+  </ForwardRef>
+  <UNDEFINED />
+</ForwardRef>
 `;
 
 exports[`components/Question matches snapshot for team 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1
           className="capitalized"
         >
@@ -98,91 +123,112 @@ exports[`components/Question matches snapshot for team 1`] = `
           0
            team members have answered this question.
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <h2>
         Question #
         1
       </h2>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
-      <ForwardRef(Bootstrap(Form))>
+      <ForwardRef
+        inline={false}
+      >
         <p>
           In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half of the lake?
         </p>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="24"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="47"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="96"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="49"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-      </ForwardRef(Bootstrap(Form))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+        </ForwardRef>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <p>
-        <ForwardRef(Bootstrap(ProgressBar))
+        <ForwardRef
           active={true}
+          animated={false}
+          isChild={false}
           label="0%"
+          max={100}
+          min={0}
           now={0}
           srOnly={true}
+          striped={false}
         />
       </p>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver))>
+    </ForwardRef>
+  </ForwardRef>
+  <UNDEFINED>
     <withRouter(LinkContainer)
       to="/question/2"
     >
-      <ForwardRef(Bootstrap(Button))
+      <ForwardRef
+        active={false}
+        disabled={false}
         variant="success"
       >
         Next
-      </ForwardRef(Bootstrap(Button))>
+      </ForwardRef>
     </withRouter(LinkContainer)>
-  </Memo(Connect(StartOver))>
-</ForwardRef(Bootstrap(Container))>
+  </UNDEFINED>
+</ForwardRef>
 `;
 
 exports[`components/Question matches snapshot for team all answered 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1
           className="capitalized"
         >
@@ -195,92 +241,112 @@ exports[`components/Question matches snapshot for team all answered 1`] = `
           1
            team members have answered this question.
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <h2>
         Question #
         1
       </h2>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
-      <ForwardRef(Bootstrap(Form))>
+      <ForwardRef
+        inline={false}
+      >
         <p>
           In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half of the lake?
         </p>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="24"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="47"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="96"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="49"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-      </ForwardRef(Bootstrap(Form))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+        </ForwardRef>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <p>
-        <ForwardRef(Bootstrap(ProgressBar))
+        <ForwardRef
           active={true}
+          animated={false}
+          isChild={false}
           label="0%"
+          max={100}
+          min={0}
           now={0}
           srOnly={true}
+          striped={false}
         />
       </p>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver))>
+    </ForwardRef>
+  </ForwardRef>
+  <UNDEFINED>
     <withRouter(LinkContainer)
       to="/question/2"
     >
-      <ForwardRef(Bootstrap(Button))
+      <ForwardRef
+        active={false}
         disabled={true}
         variant="success"
       >
         Next
-      </ForwardRef(Bootstrap(Button))>
+      </ForwardRef>
     </withRouter(LinkContainer)>
-  </Memo(Connect(StartOver))>
-</ForwardRef(Bootstrap(Container))>
+  </UNDEFINED>
+</ForwardRef>
 `;
 
 exports[`components/Question matches snapshot for team last question 1`] = `
-<ForwardRef(Bootstrap(Container))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))>
-      <ForwardRef(Bootstrap(Jumbotron))>
+<ForwardRef
+  fluid={false}
+>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef>
+      <ForwardRef
+        fluid={false}
+      >
         <h1
           className="capitalized"
         >
@@ -293,82 +359,97 @@ exports[`components/Question matches snapshot for team last question 1`] = `
           0
            team members have answered this question.
         </p>
-      </ForwardRef(Bootstrap(Jumbotron))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <h2>
         Question #
         2
       </h2>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
-      <ForwardRef(Bootstrap(Form))>
+      <ForwardRef
+        inline={false}
+      >
         <p>
           A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?
         </p>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="$0.05"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="$0.06"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="$0.10"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-        <ForwardRef(Bootstrap(FormGroup))>
-          <ForwardRef(Bootstrap(FormCheck))
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
             checked={false}
             label="$0.50"
             type="checkbox"
           />
-        </ForwardRef(Bootstrap(FormGroup))>
-      </ForwardRef(Bootstrap(Form))>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <ForwardRef(Bootstrap(Row))>
-    <ForwardRef(Bootstrap(Col))
+        </ForwardRef>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef
+    noGutters={false}
+  >
+    <ForwardRef
       xs={12}
     >
       <p>
-        <ForwardRef(Bootstrap(ProgressBar))
+        <ForwardRef
           active={true}
+          animated={false}
+          isChild={false}
           label="50%"
+          max={100}
+          min={0}
           now={50}
           srOnly={true}
+          striped={false}
         />
       </p>
-    </ForwardRef(Bootstrap(Col))>
-  </ForwardRef(Bootstrap(Row))>
-  <Memo(Connect(StartOver))>
+    </ForwardRef>
+  </ForwardRef>
+  <UNDEFINED>
     <withRouter(LinkContainer)
       to="/summary"
     >
-      <ForwardRef(Bootstrap(Button))
+      <ForwardRef
+        active={false}
+        disabled={false}
         variant="success"
       >
         Next
-      </ForwardRef(Bootstrap(Button))>
+      </ForwardRef>
     </withRouter(LinkContainer)>
-  </Memo(Connect(StartOver))>
-</ForwardRef(Bootstrap(Container))>
+  </UNDEFINED>
+</ForwardRef>
 `;
